@@ -6,7 +6,5 @@ public abstract class Anyag {
     public void RemoveCucc(Virologus v){
 
     }
-    public boolean AnyagÁtadás(Virologus v){
-
-    }
+    public boolean AnyagÁtadás(Virologus v){ return true; }
 }
