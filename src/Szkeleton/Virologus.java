@@ -1,6 +1,13 @@
 package Szkeleton;
 
 public class Virologus implements Steppable {
+
+
+    public ILépés LépésViselkdés;
+
+
+
+
     public void move(Mező m){
 
     }
