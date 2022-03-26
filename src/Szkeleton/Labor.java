@@ -16,12 +16,18 @@ public class Labor extends Mező {
 
 
     public Labor() {
-        this.kód = new NullÁgens();  // majd a game később létrehoz egy normális ágenst az add-al
+        this.kód = new NullÁgens();  // majd a game később létrehoz egy normális ágenst az AddKód-al
     }
 
 
 
 
+    /*
+    * Hozzáadja a mezőhöz a megadott ágenst
+    *
+    * @param a Ágens, amit hozzá szeretnénk adni a mezőhöz
+    * @return void
+    */
     public void AddKód(Ágens agens) {  // hozzáad egy random kódot
         this.kód = agens;
     }

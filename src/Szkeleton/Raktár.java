@@ -22,6 +22,12 @@ public class Raktár extends Mező {
 
 
 
+    /*
+    * Anyagot ad a mezőhöz (egy mezőn, egy anyag)
+    *
+    * @param a A mezőhöz adandó anyag
+    * @return void
+    */
     public void AddAnyag(Anyag a) {
         if (this.anyag.size() == 0) {  // csak akkor adhatunk a mezőhötz anyagot, ha nincs még rajta
             this.anyag.add(a);
@@ -31,6 +37,11 @@ public class Raktár extends Mező {
 
 
 
+    /*
+    * Törli az anyagot a mezőről
+    *
+    * @return void
+    */
     public void RemoveAnyag() {
         this.anyag.clear();  // a lista teljes tartalmát törli
     }
@@ -38,6 +49,12 @@ public class Raktár extends Mező {
 
 
 
+    /*
+    * Átadja az anyagot a megadott virológusnak
+    *
+    * @param v A virológus, melynek át akarjuk adni az anyagot
+    * @return void
+    */
     @Override
     public void CuccÁtadás(Virologus v) {
 
@@ -51,8 +68,6 @@ public class Raktár extends Mező {
         if (this.anyag.get(0).AnyagÁtadás(v)) {
             RemoveAnyag();
         }
-
-
     }
 
 

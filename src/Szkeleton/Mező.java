@@ -23,22 +23,30 @@ public class Mező {
 
 
 
-
+    /*
+    * A virológus egy új mezőre léptetése
+    *
+    * @param v A virológus, amely a mezőre lép
+    * @return void
+    */
     public void AcceptViro(Virologus v) {
 
-        // hozzáadjuk a virológust az aktuális mezőhöz
         this.virologusok.add(v);
 
-        // kitöröljük a virológust az egyik szomszédos mezőről (mert csak onnan jöhetett)
-        for (Mező mezo : this.szomszédok) {
-            mezo.RemoveViro(v);  // ha nincs rajta a virológus, akkor sem dob hibát -> összes szomszédra meghívható
+        for (Mező mezo : this.szomszédok) {  // kitöröljük a virológust szomszédos mezőről (mert csak onnan jöhetett)
+            mezo.RemoveViro(v);
         }
 
     }
 
 
 
-
+    /*
+    * Törli a megadott virológust a mezőről.
+    *
+    * @param v A virológus melyet törölni szeretnénk
+    * @return void
+    */
     public void RemoveViro(Virologus v) {
         this.virologusok.remove(v);
     }
@@ -46,11 +54,17 @@ public class Mező {
 
 
 
-    public void CuccÁtadás(Virologus v) { }  // az ősben itt nincs teendő
+    /*
+    * Az anyag és item felvételére szolgáló függvény
+    */
+    public void CuccÁtadás(Virologus v) { }
 
 
 
 
+    /*
+    *
+    */
     public void Felfedez(Virologus v) {
         v.visit(this);
     }
