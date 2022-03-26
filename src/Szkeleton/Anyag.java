@@ -4,10 +4,11 @@ public abstract class Anyag {
 
     public abstract void KellCrafthoz(Ágens a);
     public void RemoveCucc(Virologus v){
-        v.RemoveCuc((Cucc) this);
+        v.RemoveCucc((Cucc) this);
     }
     public boolean AnyagÁtadás(Virologus v){
-        v.TárgyMegkapás(this);
+        v.AnyagMegkapás(this);
+        return true;
     }
 
     public boolean equals(Anyag a) {
