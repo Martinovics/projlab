@@ -2,24 +2,12 @@ package Szkeleton;
 
 import java.util.*;
 
-
-
-
-
-
 public class Óvóhely extends Mező {
-
-
     private List<Item> item;  // egyelemű lista
-
-
-
 
     public Óvóhely() {
         this.item = new ArrayList<>();
     }
-
-
 
     /*
      * Itemet ad a mezőhöz (egy mezőn, egy item)
@@ -33,9 +21,6 @@ public class Óvóhely extends Mező {
         }
     }
 
-
-
-
     /*
      * Törli az itemet a mezőről
      *
@@ -44,9 +29,6 @@ public class Óvóhely extends Mező {
     public void RemoveItem() {
         this.item.clear();
     }
-
-
-
 
     /*
     * Átadja az itemet a megadott virológusnak
@@ -67,9 +49,4 @@ public class Óvóhely extends Mező {
         if (this.item.get(0).ItemÁtadás(v)) {
             RemoveItem();
         }
-    }
-
-
-
-
 }

@@ -1,24 +1,13 @@
 package Szkeleton;
 
-
-
-
-
-
 public class Labor extends Mező {
 
 
     private Ágens kód;
 
-
-
-
     public Labor() {
         this.kód = new NullÁgens();  // majd a game később létrehoz egy normális ágenst az AddKód-al
     }
-
-
-
 
     /*
     * Hozzáadja a mezőhöz a megadott ágenst
@@ -30,7 +19,8 @@ public class Labor extends Mező {
         this.kód = agens;
     }
 
-
-
-
+    @Override
+    public void Felfedez(Virologus v) {
+        super.Felfedez(v);
+    }
 }
