@@ -1,6 +1,6 @@
 package Szkeleton;
 
-public class Item {
+public class Item implements Cucc{
     public void Effekt(Virologus v){}
     public void AntiEffekt(Virologus v){}
     public Ágens BekendőésEffket(Virologus v, Ágens a){}

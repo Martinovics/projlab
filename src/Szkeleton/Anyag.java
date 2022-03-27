@@ -1,8 +1,9 @@
 package Szkeleton;
 
-public abstract class Anyag {
+public abstract class Anyag implements Cucc{
 
     public abstract void KellCrafthoz();
+
     public void RemoveCucc(Virologus v){
 
     }
