@@ -7,6 +7,7 @@ public class Anyag implements Cucc {
     public boolean KellCrafthoz(Ágens a){
         return true;
     }
+
     public void RemoveCucc(Virologus v){
         v.AnyagVisit(this);
     }

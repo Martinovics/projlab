@@ -26,7 +26,7 @@ public abstract class Item  implements Cucc{
     *@return void
     */
     public void RemoveCucc(Virologus v){
-            v.ItemVisit(this);
+        v.ItemVisit(this);
     }
      /**
     *Eszköz átadása a paraméterként kapott virológusnak, ha igazzal tér vissza.

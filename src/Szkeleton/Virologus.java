@@ -163,6 +163,7 @@ public class Virologus implements Steppable {
     }
     public void ItemVisit(Item i){
         System.out.println("Item visitelve lett");
+        i.AntiEffekt(this);
     }
     public void AnyagVisit(Anyag a){
         System.out.println("Anyag visitelve lett");
