@@ -2,6 +2,12 @@ package Szkeleton;
 
 public class VitusLépés implements  ILépés{
 
+    /**
+     * @author Golyha Tamás
+     * v virológus átlép egyik szomszédos mezőjére amit a játékos nem tud kiválasztani
+     * @param v Virologus
+     */
+
     @Override
     public void Lépés(Virologus v) {
         System.out.println("Vituslépés hívódott");
