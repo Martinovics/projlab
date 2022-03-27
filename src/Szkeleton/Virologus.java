@@ -1,6 +1,10 @@
 package Szkeleton;
 
 public class Virologus implements Steppable {
+    public ArrayList<Anyag> kódok;
+    public ArrayList<Anyag> ágens;
+    public ArrayList<Anyag> anyagok;
+
     public void move(Mező m){
 
     }
