@@ -1,6 +1,4 @@
 package Szkeleton;
-
-
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -260,7 +258,5 @@ public class Virologus implements Steppable {
     public void AnyagVisit(Anyag a){
         System.out.println("Anyag visitelve lett");
     }
-
-
 
 }
