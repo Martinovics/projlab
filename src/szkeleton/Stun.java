@@ -33,4 +33,13 @@ public class Stun extends Ágens{
         v.setLépésBehaviour(Game.getAktorLépés());
 
     }
+
+    @Override
+    public boolean equals(Ágens a) {
+        return false;
+    }
+    @Override
+    public boolean equals(Stun a) {
+        return true;
+    }
 }

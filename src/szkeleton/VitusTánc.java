@@ -32,4 +32,14 @@ public class VitusTánc extends  Ágens{
             VitusTánc a_copy = new VitusTánc();
             v.ÁgensMegkapás(a_copy);
     }
+
+
+    @Override
+    public boolean equals(Ágens a) {
+        return false;
+    }
+    @Override
+    public boolean equals(VitusTánc a) {
+        return true;
+    }
 }

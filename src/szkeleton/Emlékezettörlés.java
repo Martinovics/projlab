@@ -33,4 +33,12 @@ public class Emlékezettörlés extends  Ágens{
         Emlékezettörlés a_copy = new Emlékezettörlés();
         v.ÁgensMegkapás(a_copy);
     }
+    @Override
+    public boolean equals(Ágens a) {
+        return false;
+    }
+    @Override
+    public boolean equals(Emlékezettörlés a) {
+        return true;
+    }
 }

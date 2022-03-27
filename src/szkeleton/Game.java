@@ -4,12 +4,16 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class Game {
     public static NullÁgens n;
     public static VitusLépés vitusLépés;
     public static AktorLépés aktorLépés;
     public static StunLépés stunLépés;
+
+    public static ArrayList<Steppable> steppables;
+    public static ArrayList<Mező> mezők;
     /**
      * Játékban lévő gének száma.
      */
@@ -33,8 +37,9 @@ public class Game {
     public static StunLépés getStunLépés(){
         return stunLépés;
     }
-    public static void Következő(){
+    public static Steppable Következő(){
 
+        //return steppables.get();
     }
     public static void AddSteppable(Steppable s){}
     public static void RemoveSteppable(Steppable s){}

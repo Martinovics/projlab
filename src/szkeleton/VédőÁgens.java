@@ -46,4 +46,12 @@ public class VédőÁgens extends Ágens{
         v.ÁgensMegkapás(a_copy);
     }
 
+    @Override
+    public boolean equals(Ágens a) {
+        return false;
+    }
+    @Override
+    public boolean equals(VédőÁgens a) {
+        return true;
+    }
 }

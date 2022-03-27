@@ -20,6 +20,33 @@ public class NullÁgens extends Ágens{
         return  this;
     }
 
+    /**
+     * @author Lenkovics Ákos
+     * Átadja v virológusnak saját magát, mint kód
+     * @param v a Virológus aki megkapja ezt az Ágenst
+     */
+    public void KódÁtadás(Virologus v){
+
+    }
+
+    /**
+     * @author Lenkovics Ákos
+     * Átadja v virológusnak saját magát, mint Buff
+     * @param v a Virológus aki megkapja ezt az Ágenst
+     */
+    public void BuffÁtadás(Virologus v){
+
+    }
+
+    /**
+     * @author Lenkovics Ákos
+     * Átadja v virológusnak saját magát, mint "Ágens"
+     * @param v a Virológus aki megkapja ezt az Ágenst
+     */
+    public void ÁgensÁtadás(Virologus v){
+
+    }
+
     @Override
     public void Create(Virologus v){}
     @Override
@@ -31,5 +58,6 @@ public class NullÁgens extends Ágens{
     public boolean equals(NullÁgens a){
         return true;
     }
+
 
 }

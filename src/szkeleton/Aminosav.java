@@ -18,4 +18,6 @@ public class Aminosav extends Anyag{
     public boolean equals(Aminosav a) {
         return true;
     }
+
+
 }
