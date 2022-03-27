@@ -2,17 +2,14 @@ package Szkeleton;
 
 public class Köpeny extends Item{
     @Override
-    public Ágens BekendőésEffket(Virologus v, Ágens a) {
-        return super.BekendőésEffket(v, a);
+    public Ágens BekenődésEffket(Virologus v, Ágens a) {
+        System.out.println("Köpeny BekenődésEfffekt()");
+        return a;
     }
 
     @Override
-    public void Effekt(Virologus v) {
-        super.Effekt(v);
-    }
+    public void Effekt(Virologus v) {}
 
     @Override
-    public void AntiEffekt(Virologus v) {
-        super.AntiEffekt(v);
-    }
+    public void AntiEffekt(Virologus v) {}
 }

@@ -2,7 +2,6 @@ package Szkeleton;
 
 public class Aminosav extends Anyag{
     @Override
-
     public boolean KellCrafthoz(Ágens a) {
         if(a.AminosavVisit(this)){
             return true;

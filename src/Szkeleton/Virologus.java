@@ -58,34 +58,13 @@ public class Virologus implements Steppable {
         this.buff.add(a);
         return true;
     }
-    public void RemoveBuff(Ágens a){
+    public boolean RemoveBuff(Ágens a){
         this.buff.remove(a);
-        a.Effekt(this);
+        a.AntiEffekt(this);
         return true;
     }
-    public void RemoveBuff(Ágens a){
-        a.AntiEffekt(this);
-        this.buff.remove(a);
-    }
-
-
-
 
     public void RemoveCucc(Cucc c){
-        try{
-          this.felszerelés.remove(c);
-        }
-        catch (Exception e){
-
-        }
-
-        try {
-            this.anyagok.remove(c);
-        }
-        catch (Exception e){
-
-        }
-
     }
 
     public void Rabol(Virologus v){
@@ -110,18 +89,17 @@ public class Virologus implements Steppable {
 
     }
 
-    public  void TárgyElvétel(Virologus v, Cucc c){
+    public  void TárgyElvétel(Virologus v, Cucc c) {
 
-        Item i = new Item();
+
         Anyag a = new Anyag();
 
-        if(c.equals(a)){
+        if (c.equals(a)) {
             this.anyagok.remove(a);
+        } else {
+            this.felszerelés.remove(c);
         }
-        else{
-            this.felszerelés.remove(i);
     }
-
 
     public void mindentElfelejt(){
         this.kódok.removeAll(kódok);
@@ -143,15 +121,12 @@ public class Virologus implements Steppable {
     }
       
     public void Bekenődés(Virologus v, Ágens a){
-
-
-
         for (int i = 0; i < v.felszerelés.size(); i++) {
-            a=this.felszerelés.get(i).BekendőésEffket(v,a);
+            a=this.felszerelés.get(i).BekenődésEffket(v,a);
         }
 
         for (int i = 0; i < v.buff.size(); i++) {
-            a=this.buff.get(i).BekendőésEffekt(a);
+            a=this.buff.get(i).BekenődésEffekt(a);
         }
 
         a.BuffÁtadás(this);

@@ -25,7 +25,7 @@ public class Zsák extends Item{
     *@return a - ágens
     */
     @Override
-    public Ágens BekendőésEffket(Virologus v, Ágens a) {
+    public Ágens BekenődésEffket(Virologus v, Ágens a) {
         return a;
     }
 }

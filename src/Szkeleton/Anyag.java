@@ -8,7 +8,7 @@ public class Anyag implements Cucc {
         return true;
     }
     public void RemoveCucc(Virologus v){
-        v.RemoveCuc(this);
+        v.AnyagVisit(this);
     }
 
     public boolean AnyagÁtadás(Virologus v){
