@@ -1,6 +1,10 @@
 package Szkeleton;
 
+import java.util.ArrayList;
+
 public class Virologus implements Steppable {
+    public ArrayList<Anyag> anyagok;
+
     public void move(Mező m){
 
     }
@@ -19,7 +23,7 @@ public class Virologus implements Steppable {
     public boolean AnyagMegkapás(Anyag a){
 
     }
-    public boolean TárgyMEgkapés(Item i){
+    public boolean TárgyMegkapás(Item i){
 
     }
     public boolean ÁgensMegkapás(Ágens a){
@@ -36,7 +40,7 @@ public class Virologus implements Steppable {
     public  Cucc[] Rabolva(){}
     public void mindentElfelejt(){}
     public void Step(){}
-    public void setLépésBehaviour(){}
+    public void setLépésBehaviour(ILépés s){}
     public void Bekenődés(Virologus v, Ágens a){}
     public void overwhelmingBekenődés(Ágens a){}
     public void EndRound(){}
