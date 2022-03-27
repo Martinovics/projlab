@@ -21,6 +21,8 @@ public abstract class Ágens implements  Steppable{
      * @param ei ElbomlásIdő
      */
     public Ágens(int hi, int ei){
+        System.out.println("Ágens létrejött");
+        Recept = new ArrayList<Anyag>();
         HatóIdő = hi;
         ElbomlásIdő = ei;
         state = State.Kód;
@@ -69,26 +71,27 @@ public abstract class Ágens implements  Steppable{
      */
     public void Create(Virologus v){
         Recept_temp = new ArrayList<Anyag>();
-        for(int i = 0; i < Recept_temp.size(); i++){
-            Recept_temp.add( new Anyag());
+        for(int i = 0; i < Recept.size(); i++){
+            Recept_temp.add( new NullAnyag());
         }
-        for(Anyag a : v.anyagok){
-            if(a.KellCrafthoz(this)){
-                v.RemoveCuc(a);
+        ArrayList<Integer> trace = new ArrayList<>();
+        for(int i = 0; i < v.anyagok.size(); i++){
+            if(v.anyagok.get(i).KellCrafthoz(this)){
+                trace.add(i);
             }
-
         }
         if(Recept_temp_kiertkelo()) {
+            for(int i = 0; i < trace.size(); i++){
+                v.anyagok.remove(trace.get(i));
+            }
             Create_(v);
         }else{
             for(int i = 0; i < Recept_temp.size(); i++){
-                Anyag anyagProbe = new Anyag();
+                Anyag anyagProbe = new NullAnyag();
                 if(!(Recept_temp.get(i).equals(anyagProbe))){
                     v.AnyagMegkapás(Recept_temp.get(i));
                 }
-
             }
-
         }
     }
 
@@ -172,6 +175,7 @@ public abstract class Ágens implements  Steppable{
      * @param v a Virológus aki megkapja ezt az Ágenst
      */
     public void KódÁtadás(Virologus v){
+        System.out.print(this+ "átadja magát kódként");
         if(v.GénMegkapás(this)) state = State.Kód;
     }
 
@@ -181,6 +185,7 @@ public abstract class Ágens implements  Steppable{
      * @param v a Virológus aki megkapja ezt az Ágenst
      */
     public void BuffÁtadás(Virologus v){
+        System.out.print(this+ "átadja magát buffként");
         if(v.BuffMegkapás(this)) state = State.Buff;
     }
 
@@ -190,6 +195,7 @@ public abstract class Ágens implements  Steppable{
      * @param v a Virológus aki megkapja ezt az Ágenst
      */
     public void ÁgensÁtadás(Virologus v){
+        System.out.print(this+ " átadja magát ágensként");
         if(v.ÁgensMegkapás(this)) state = State.Ágens;
     }
 

@@ -3,21 +3,24 @@ package Szkeleton;
 public class NullÁgens extends Ágens{
     public NullÁgens() {
         super(5,5);
+        System.out.println(this+" létrejött");
     }
 
     @Override
     public void Effekt(Virologus v) {
+        System.out.println(this+" effekt");
         //Semmi
     }
 
     @Override
     public void AntiEffekt(Virologus v) {
-
+        System.out.println(this+" antieffekt");
         //Semmi
     }
 
     @Override
     public Ágens BekenődésEffekt(Ágens a) {
+        System.out.println(this+" bekenődésEffekt");
         return  this;
     }
 
@@ -58,5 +61,10 @@ public class NullÁgens extends Ágens{
     }
     public boolean equals(NullÁgens a){
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "NullÁgens";
     }
 }

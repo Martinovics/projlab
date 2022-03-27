@@ -1,5 +1,6 @@
 package Szkeleton;
 
+
 public class VitusLépés implements  ILépés{
     /**
      * @author Golyha Tamás
@@ -10,7 +11,7 @@ public class VitusLépés implements  ILépés{
     public void Lépés(Virologus v) {
         System.out.println("Vituslépés hívódott");
         int hossz = v.mező.szomszédok.size();
-        int randomMezoSzama= hossz%7;
+        int randomMezoSzama= 0;
         v.move(v.mező.szomszédok.get(randomMezoSzama));
     }
 }

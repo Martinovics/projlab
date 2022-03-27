@@ -25,8 +25,9 @@ public abstract class Item  implements Cucc{
     *@param v - paramáter virológus
     *@return void
     */
-    public void RemoveCucc(Virologus v){
+    public void removeCucc(Virologus v){
         v.ItemVisit(this);
+        System.out.println("Item elvevődött");
     }
      /**
     *Eszköz átadása a paraméterként kapott virológusnak, ha igazzal tér vissza.
@@ -35,6 +36,7 @@ public abstract class Item  implements Cucc{
     */
     public boolean ItemÁtadás(Virologus v){
             if(v.TárgyMegkapás(this)) {
+                System.out.println("Item Átadódott");
                 return true;
             }
             else {

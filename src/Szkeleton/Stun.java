@@ -3,6 +3,7 @@ package Szkeleton;
 public class Stun extends Ágens{
     public Stun() {
         super(2, 5);
+        System.out.println(this+" létrejött");
         Recept.add(new Nukleotid());
         Recept.add(new Aminosav());
         Recept.add(new Aminosav());
@@ -10,6 +11,7 @@ public class Stun extends Ágens{
 
     @Override
     public Ágens BekenődésEffekt(Ágens a) {
+        System.out.println(this+" bekenődésEffekt");
         return a;
     }
 
@@ -25,11 +27,13 @@ public class Stun extends Ágens{
 
     @Override
     public void Effekt(Virologus v) {
+        System.out.println(this+" effekt");
         v.setLépésBehaviour(Game.getStunLépés());
     }
 
     @Override
     public void AntiEffekt(Virologus v) {
+        System.out.println(this+" antieffekt");
         v.setLépésBehaviour(Game.getAktorLépés());
 
     }
@@ -41,5 +45,8 @@ public class Stun extends Ágens{
     @Override
     public boolean equals(Stun a) {
         return true;
+    }
+    public String toString() {
+        return "Stun";
     }
 }

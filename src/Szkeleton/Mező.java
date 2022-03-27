@@ -6,6 +6,7 @@ public class Mező {
     public ArrayList<Mező> szomszédok;
 
     public Mező() {
+        System.out.println(this+" létrejött");
         this.virologusok = new ArrayList<>();
         this.szomszédok = new ArrayList<>();
     }
@@ -17,6 +18,7 @@ public class Mező {
     * @return void
     */
     public void AcceptViro(Virologus v) {
+        System.out.println(this+" Elfogadta a virológust");
         this.virologusok.add(v);
     }
 
@@ -27,13 +29,16 @@ public class Mező {
     * @return void
     */
     public void RemoveViro(Virologus v) {
+        System.out.println(this+" eltávolította a virológust");
         this.virologusok.remove(v);
     }
 
     /*
     * Az anyag és item felvételére szolgáló függvény
     */
-    public void CuccÁtadás(Virologus v) { }
+    public void CuccÁtadás(Virologus v) {
+        System.out.println(this+" nem adott semmit a virológusnak (nincs mit adnia)");
+    }
 
 
     /*
@@ -41,5 +46,10 @@ public class Mező {
     */
     public void Felfedez(Virologus v) {
         v.visit(this);
+    }
+
+    @Override
+    public String toString() {
+        return "Mező";
     }
 }

@@ -37,40 +37,53 @@ public class Game {
     public static StunLépés getStunLépés(){
         return stunLépés;
     }
-    public static Steppable Következő(){
+    public static void Következő(){
 
         //return steppables.get();
     }
     public static void AddSteppable(Steppable s){}
     public static void RemoveSteppable(Steppable s){}
-    public static void end(){}
+    public static void end(Virologus v){
+        System.out.println("Vége: "+ v + "győzőtt");
+    }
 
     private static void Virológus_mezőre_lép(){
         Virologus v = new Virologus();
         Mező m1 = new Mező();
         Mező m2 = new Mező();
+        v.PutOnMező(m1);
+        m1.AcceptViro(v);
         v.move(m2);
     }
     private static void Virológus_egy_óvóhelyre_lép(){
         Virologus v = new Virologus();
         Mező m1 = new Mező();
         Óvóhely m2 = new Óvóhely();
+        v.PutOnMező(m1);
+        m1.AcceptViro(v);
         v.move(m2);
     }
     private static void Virológus_egy_labor_mezőre_lép(){
         Virologus v = new Virologus();
         Mező m1 = new Mező();
         Labor m2 = new Labor();
+        v.PutOnMező(m1);
+        m1.AcceptViro(v);
         v.move(m2);
     }
     private static void Virológus_egy_raktár_mezőre_lép(){
         Virologus v = new Virologus();
         Mező m1 = new Mező();
         Raktár m2 = new Raktár();
+        v.PutOnMező(m1);
+        m1.AcceptViro(v);
         v.move(m2);
     }
     private static void Stun_lépés(){
         Virologus v = new Virologus();
+        Mező m1 = new Mező();
+        v.PutOnMező(m1);
+        m1.AcceptViro(v);
         v.setLépésBehaviour(Game.getStunLépés());
         v.Step();
     }
@@ -78,6 +91,9 @@ public class Game {
         Virologus v = new Virologus();
         Mező m1 = new Mező();
         Mező m2 = new Mező();
+        m1.szomszédok.add(m2);
+        v.PutOnMező(m1);
+        m1.AcceptViro(v);
         v.setLépésBehaviour(Game.getVitusLépés());
         v.Step();
     }
@@ -85,6 +101,9 @@ public class Game {
         Virologus v = new Virologus();
         Mező m1 = new Mező();
         Labor m2 = new Labor();
+        m1.szomszédok.add(m2);
+        m1.AcceptViro(v);
+        v.PutOnMező(m1);
         v.setLépésBehaviour(Game.getVitusLépés());
         v.Step();
     }
@@ -92,6 +111,9 @@ public class Game {
         Virologus v = new Virologus();
         Mező m1 = new Mező();
         Óvóhely m2 = new Óvóhely();
+        m1.szomszédok.add(m2);
+        v.PutOnMező(m1);
+        m1.AcceptViro(v);
         v.setLépésBehaviour(Game.getVitusLépés());
         v.Step();
     }
@@ -99,6 +121,9 @@ public class Game {
         Virologus v = new Virologus();
         Mező m1 = new Mező();
         Raktár m2 = new Raktár();
+        m1.szomszédok.add(m2);
+        v.PutOnMező(m1);
+        m1.AcceptViro(v);
         v.setLépésBehaviour(Game.getVitusLépés());
         v.Step();
     }
@@ -106,6 +131,7 @@ public class Game {
         Virologus v = new Virologus();
         Raktár r = new Raktár();
         Nukleotid n = new Nukleotid();
+        v.PutOnMező(r);
         r.AddAnyag(n);
         v.CuccFelvétel();
     }
@@ -113,6 +139,7 @@ public class Game {
         Virologus v = new Virologus();
         Raktár r = new Raktár();
         Aminosav n = new Aminosav();
+        v.PutOnMező(r);
         r.AddAnyag(n);
         v.CuccFelvétel();
     }
@@ -120,48 +147,56 @@ public class Game {
         Virologus v1 = new Virologus();
         Virologus v2 = new Virologus();
         Nukleotid c = new Nukleotid();
+        v2.AnyagMegkapás(c);
         v1.TárgyElvétel(v2,c);
     }
     private static void Aminosav_rablás_másik_virológustól(){
         Virologus v1 = new Virologus();
         Virologus v2 = new Virologus();
         Aminosav c = new Aminosav();
+        v2.AnyagMegkapás(c);
         v1.TárgyElvétel(v2,c);
     }
     private static void Védőköpeny_felvétel_óvóhelyről(){
         Virologus v = new Virologus();
         Óvóhely o = new Óvóhely();
         Köpeny i = new Köpeny();
+        v.PutOnMező(o);
         v.CuccFelvétel();
     }
     private static void Zsák_felvétel_óvóhelyről(){
         Virologus v = new Virologus();
         Óvóhely o = new Óvóhely();
         Zsák i = new Zsák();
+        v.PutOnMező(o);
         v.CuccFelvétel();
     }
     private static void Kesztyű_felvétel_óvóhelyről(){
         Virologus v = new Virologus();
         Óvóhely o = new Óvóhely();
         Kesztyű i = new Kesztyű();
+        v.PutOnMező(o);
         v.CuccFelvétel();
     }
     private static void Védőköpeny_rablás_virológustól(){
         Virologus v1 = new Virologus();
         Virologus v2 = new Virologus();
         Köpeny c = new Köpeny();
+        v2.TárgyMegkapás(c);
         v1.TárgyElvétel(v2,c);
     }
     private static void Zsák_rablás_virológustól(){
         Virologus v1 = new Virologus();
         Virologus v2 = new Virologus();
         Zsák c = new Zsák();
+        v2.TárgyMegkapás(c);
         v1.TárgyElvétel(v2,c);
     }
     private static void Kesztyű_rablás_virológustól(){
         Virologus v1 = new Virologus();
         Virologus v2 = new Virologus();
         Kesztyű c = new Kesztyű();
+        v2.TárgyMegkapás(c);
         v1.TárgyElvétel(v2,c);
     }
     private static void Virológus_másik_virológust_beken_bénító_ágenssel(){
@@ -334,7 +369,7 @@ public class Game {
         Kesztyű k = new Kesztyű();
         Stun s = new Stun();
         v2.TárgyMegkapás(k);
-        v1.Bekenődés(v2,s);
+        v1.ÁgensKenés(v2,s);
     }
     private static void Kesztyű_visszadob_védőÁgens(){
         Virologus v2 = new Virologus();
@@ -342,7 +377,7 @@ public class Game {
         Kesztyű k = new Kesztyű();
         VédőÁgens s = new VédőÁgens();
         v2.TárgyMegkapás(k);
-        v1.Bekenődés(v2,s);
+        v1.ÁgensKenés(v2,s);
     }
     private static void Kesztyű_visszadob_Vitustánc(){
         Virologus v2 = new Virologus();
@@ -350,7 +385,7 @@ public class Game {
         Kesztyű k = new Kesztyű();
         VitusTánc s = new VitusTánc();
         v2.TárgyMegkapás(k);
-        v1.Bekenődés(v2,s);
+        v1.ÁgensKenés(v2,s);
     }
     private static void Kesztyű_visszadob_emléktörlőt(){
         Virologus v2 = new Virologus();
@@ -358,19 +393,20 @@ public class Game {
         Kesztyű k = new Kesztyű();
         Emlékezettörlés s = new Emlékezettörlés();
         v2.TárgyMegkapás(k);
-        v1.Bekenődés(v2,s);
+        v1.ÁgensKenés(v2,s);
     }
     private static void Bénító_ágens_készítés(){
         Virologus v = new Virologus();
-        v.AnyagMegkapás(new Nukleotid());
+/*        v.AnyagMegkapás(new Nukleotid());
         v.AnyagMegkapás(new Nukleotid());
         v.AnyagMegkapás(new Nukleotid());
         v.AnyagMegkapás(new Aminosav());
         v.AnyagMegkapás(new Aminosav());
-        v.AnyagMegkapás(new Aminosav());
+        v.AnyagMegkapás(new Aminosav());*/
         Stun s = new Stun();
         v.GénMegkapás(s);
         v.ÁgensElőállít(s);
+
     }
     private static void Vitustánc_készítés(){
         Virologus v = new Virologus();
@@ -414,32 +450,40 @@ public class Game {
         v.GénMegkapás(new Stun());
         v.EndRound();
         if(v.kódok.size() == NoGén){
-            end();
+            end(v);
         }
         //Ezt kitalálni
     }
     private static void Bénító_kód_tanulás(){
         Stun a = new Stun();
         Labor l = new Labor();
+        l.AddKód(a);
         Virologus v = new Virologus();
+        v.PutOnMező(l);
         v.CuccFelvétel();
     }
     private static void Vitustánc_kód_tanulás(){
         VitusTánc a = new VitusTánc();
         Labor l = new Labor();
+        l.AddKód(a);
         Virologus v = new Virologus();
+        v.PutOnMező(l);
         v.CuccFelvétel();
     }
     private static void Védő_kód_tanulás(){
         VédőÁgens a = new VédőÁgens();
         Labor l = new Labor();
+        l.AddKód(a);
         Virologus v = new Virologus();
+        v.PutOnMező(l);
         v.CuccFelvétel();
     }
     private static void Emléktörlő_kód_tanulás(){
         Emlékezettörlés a = new Emlékezettörlés();
         Labor l = new Labor();
+        l.AddKód(a);
         Virologus v = new Virologus();
+        v.PutOnMező(l);
         v.CuccFelvétel();
     }
     public static void main(String args[]) {

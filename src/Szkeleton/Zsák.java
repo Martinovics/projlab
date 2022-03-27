@@ -1,6 +1,10 @@
 package Szkeleton;
 
 public class Zsák extends Item{
+    public Zsák(){
+        System.out.println(this+" létrejött");
+    }
+
     /**
     *-9 férőhelyet “ad” a virológusnak.
     *@param v - paraméter virológus
@@ -8,6 +12,7 @@ public class Zsák extends Item{
     */
     @Override
     public void AntiEffekt(Virologus v) {
+        System.out.println(this+" antieffekt");
         v.itemCapacity -= 9;
     }
     /**
@@ -17,6 +22,7 @@ public class Zsák extends Item{
     */
     @Override
     public void Effekt(Virologus v) {
+        System.out.println(this+" effekt");
         v.itemCapacity+=9;
     }
     /**
@@ -26,7 +32,17 @@ public class Zsák extends Item{
     */
     @Override
     public Ágens BekenődésEffket(Virologus v, Ágens a) {
+        System.out.println(this+" bekenődésEffekt");
         return a;
 
+    }
+    public String toString() {
+        return "Zsák";
+    }
+
+    @Override
+    public boolean CuccÁtadás(Virologus v) {
+        v.TárgyMegkapás(this);
+        return true;
     }
 }

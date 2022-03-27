@@ -9,6 +9,7 @@ public class Raktár extends Mező {
     private List<Anyag> anyag;  // egyelemű lista
 
     public Raktár() {
+        System.out.println(this+" létrejött");
         this.anyag = new ArrayList<>();
     }
 
@@ -55,5 +56,10 @@ public class Raktár extends Mező {
         if (this.anyag.get(0).AnyagÁtadás(v)) {
             RemoveAnyag();
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Raktár";
     }
 }

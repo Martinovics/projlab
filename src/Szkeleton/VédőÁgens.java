@@ -3,6 +3,7 @@ package Szkeleton;
 public class VédőÁgens extends Ágens{
     public VédőÁgens(){
         super(1,5);
+        System.out.println(this+" létrejött");
         Recept.add(new Aminosav());
         Recept.add(new Aminosav());
     }
@@ -14,6 +15,7 @@ public class VédőÁgens extends Ágens{
      */
     @Override
     public Ágens BekenődésEffekt(Ágens a) {
+        System.out.println(this+" bekenődésEffekt");
         return Game.ReturnN();
     }
 
@@ -23,6 +25,7 @@ public class VédőÁgens extends Ágens{
      */
     @Override
     public void Effekt(Virologus v) {
+        System.out.println(this+" effekt");
         //Itt az Effekt nem csinál semmit
     }
 
@@ -32,6 +35,7 @@ public class VédőÁgens extends Ágens{
      */
     @Override
     public void AntiEffekt(Virologus v) {
+        System.out.println(this+" antieffekt");
         //AnitEffekt nem csinál semmit
     }
 
@@ -52,5 +56,8 @@ public class VédőÁgens extends Ágens{
     @Override
     public boolean equals(VédőÁgens a) {
         return true;
+    }
+    public String toString() {
+        return "VédőÁgens";
     }
 }

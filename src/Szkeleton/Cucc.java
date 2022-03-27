@@ -6,5 +6,7 @@ public interface Cucc {
      * ezt a függvényt valósítják meg a Cucc interfacet megvalósító osztályok
      * @param v Virologus
      */
-    public void removeCucc(Virologus virologus);
+    public void removeCucc(Virologus v);
+
+    public boolean CuccÁtadás(Virologus v);
 }

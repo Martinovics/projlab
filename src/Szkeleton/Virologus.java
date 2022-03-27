@@ -1,8 +1,6 @@
 package Szkeleton;
 
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
 
 
 public class Virologus implements Steppable {
@@ -20,6 +18,21 @@ public class Virologus implements Steppable {
     private ArrayList<Cucc> rabolható;
 
     public int itemCapacity;
+    public Virologus(){
+        kódok = new ArrayList<>();
+        ágensek = new ArrayList<>();
+        buff = new ArrayList<>();
+        anyagok = new ArrayList<>();
+        felszerelés = new ArrayList<>();
+        LépésViselkedés = Game.getAktorLépés();
+        System.out.println(this +" létrejött");
+    }
+
+    public void PutOnMező(Mező m){
+        mező = m;
+        m.AcceptViro(this);
+    }
+
 
     /**
      * @author Balogh Dávid
@@ -30,6 +43,8 @@ public class Virologus implements Steppable {
     public void move(Mező m){
         m.AcceptViro(this);
         this.mező.RemoveViro(this);
+        mező = m;
+        System.out.println(this +" átment a másik mezőre");
     }
 
     /**
@@ -47,6 +62,7 @@ public class Virologus implements Steppable {
      * */
     public void ÁgensElőállít(Ágens a){
         a.Create(this);
+        System.out.println(this +" előállított egy "+ a+ "-t");
     }
     /**
      * @author Balogh Dávid
@@ -55,6 +71,7 @@ public class Virologus implements Steppable {
 
     public void CuccFelvétel(){
         this.mező.CuccÁtadás(this);
+        System.out.println(this +" felvette a mezőről a cuccot");
     }
 
     /**
@@ -65,6 +82,7 @@ public class Virologus implements Steppable {
 
     public boolean GénMegkapás(Ágens a){
         this.kódok.add(a);
+        System.out.println(this +" megkapta a gént");
         return true;
     }
 
@@ -75,6 +93,7 @@ public class Virologus implements Steppable {
      * */
 
     public boolean AnyagMegkapás(Anyag a){
+        System.out.println(this + "Megkapta az anyagot");
         this.anyagok.add(a);
         return true;
     }
@@ -85,15 +104,18 @@ public class Virologus implements Steppable {
      * */
 
     public boolean TárgyMegkapás(Item i){
+        System.out.println(this + "Megkapta a tárgyat");
         this.felszerelés.add(i);
         i.Effekt(this);
         return true;
     }
+
     /**
      * @author Balogh Dávid
      * Valamilyen kész ágenst eltárolunk
      * */
     public boolean ÁgensMegkapás(Ágens a){
+        System.out.println(this + "Megkapta az ágenst");
         this.ágensek.add(a);
         return true;
     }
@@ -103,6 +125,7 @@ public class Virologus implements Steppable {
      * kollekcióba eltárolunk
      * */
     public boolean BuffMegkapás(Ágens a){
+        System.out.println(this + "Megkapta a buffot");
         this.buff.add(a);
         return true;
     }
@@ -112,14 +135,16 @@ public class Virologus implements Steppable {
      * Valamilyen ágens hatást deaktiválunk, tehát szintén
      * kollekcióból kiszedünk
      * */
-    public void RemoveBuff(Ágens a){
-        a.AntiEffekt(this);
     public boolean RemoveBuff(Ágens a){
+        System.out.println(this + " elvesztette a buffot");
         this.buff.remove(a);
         a.AntiEffekt(this);
         return true;
     }
-
+    public boolean CuccMegkapás(Cucc c){
+        c.CuccÁtadás(this);
+        return true;
+    }
 
     /**
      * @author Balogh Dávid
@@ -128,8 +153,8 @@ public class Virologus implements Steppable {
      * */
 
     public void RemoveCucc(Cucc c){
-
-        c.RemoveCucc(this);
+        System.out.println(this + " elvesztette a cuccot");
+        c.removeCucc(this);
     }
 
 
@@ -170,13 +195,8 @@ public class Virologus implements Steppable {
      *@param c Cucc
      * */
     public  void TárgyElvétel(Virologus v, Cucc c){
-        Anyag a = new Anyag();
-
-        if (c.equals(a)) {
-            this.anyagok.remove(a);
-        } else {
-            this.felszerelés.remove(c);
-        }
+        v.RemoveCucc(c);
+        c.CuccÁtadás(this);
     }
 
 
@@ -212,7 +232,8 @@ public class Virologus implements Steppable {
      * */
     public void ÁgensKenés(Virologus v, Ágens a){
         this.ágensek.remove(a);
-        Bekenődés(this,a);
+        System.out.println(this + "bekeni a másikat");
+        v.Bekenődés(this,a);
     }
 
     /**
@@ -223,15 +244,14 @@ public class Virologus implements Steppable {
      * */
 
     public void Bekenődés(Virologus v, Ágens a){
-        for (int i = 0; i < v.felszerelés.size(); i++) {
+        for (int i = 0; i < felszerelés.size(); i++) {
             a=this.felszerelés.get(i).BekenődésEffket(v,a);
         }
-
-        for (int i = 0; i < v.buff.size(); i++) {
+        for (int i = 0; i < buff.size(); i++) {
             a=this.buff.get(i).BekenődésEffekt(a);
         }
+        System.out.println(this + " alkalmazva lett a(z) " + a) ;
         a.BuffÁtadás(this);
-        //this.BuffMegkapás(a);
     }
 
     /**
@@ -240,6 +260,7 @@ public class Virologus implements Steppable {
      * @param a Ágens
      * */
     public void overwhelmingBekenődés(Ágens a){
+        System.out.println("right back at you buckaroo!!");
         a.BuffÁtadás(this);
 
     }
@@ -275,5 +296,10 @@ public class Virologus implements Steppable {
     }
     public void AnyagVisit(Anyag a){
         System.out.println("Anyag visitelve lett");
+    }
+
+    @Override
+    public String toString() {
+        return "Virologus";
     }
 }

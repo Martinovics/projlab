@@ -1,6 +1,9 @@
 package Szkeleton;
 
 public class Nukleotid extends  Anyag{
+    public Nukleotid(){
+        //System.out.println(this+" leeeeeétrejött");
+    }
     @Override
     public boolean KellCrafthoz(Ágens a) {
         if(a.NukleotidVisit(this)){
@@ -10,12 +13,12 @@ public class Nukleotid extends  Anyag{
     }
 
     @Override
-    public boolean equals(Anyag a) {
-        return false;
+    public boolean equals(Nukleotid a) {
+        return true;
     }
 
     @Override
-    public boolean equals(Nukleotid a) {
-        return true;
+    public String toString() {
+        return "Nukleotid";
     }
 }

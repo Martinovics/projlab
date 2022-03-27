@@ -4,6 +4,7 @@ public class Emlékezettörlés extends  Ágens{
   
     public Emlékezettörlés(){
         super(0, 5);
+        System.out.println(this +" létrejött");
         Recept.add(new Nukleotid());
         Recept.add(new Nukleotid());
         Recept.add(new Nukleotid());
@@ -12,15 +13,18 @@ public class Emlékezettörlés extends  Ágens{
 
     @Override
     public void AntiEffekt(Virologus v) {
+        System.out.println(this +"antieffekt");
     }
 
     @Override
     public void Effekt(Virologus v) {
         v.mindentElfelejt();
+        System.out.println(this +" effekt");
     }
 
     @Override
     public Ágens BekenődésEffekt(Ágens a) {
+        System.out.println(this +" bekenődésEffekt");
         return a;
     }
 
@@ -40,5 +44,10 @@ public class Emlékezettörlés extends  Ágens{
     @Override
     public boolean equals(Emlékezettörlés a) {
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Emlékezettörlés";
     }
 }

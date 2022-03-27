@@ -6,6 +6,7 @@ public class Óvóhely extends Mező {
     private List<Item> item;  // egyelemű lista
 
     public Óvóhely() {
+        System.out.println("Óvóhely létrejött");
         this.item = new ArrayList<>();
     }
 
