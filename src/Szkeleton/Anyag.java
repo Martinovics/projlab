@@ -1,5 +1,6 @@
 package Szkeleton;
 
+
 public class Anyag implements Cucc {
 
 

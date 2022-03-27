@@ -12,6 +12,7 @@ public class NullÁgens extends Ágens{
 
     @Override
     public void AntiEffekt(Virologus v) {
+
         //Semmi
     }
 
@@ -58,6 +59,4 @@ public class NullÁgens extends Ágens{
     public boolean equals(NullÁgens a){
         return true;
     }
-
-
 }
