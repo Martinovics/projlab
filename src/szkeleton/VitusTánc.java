@@ -23,19 +23,13 @@ public class VitusTánc extends  Ágens{
         return a;
     }
 
+    /**
+     * VitusTánc másolatot átad v Virológusnak
+     * @param v Virológus, amelyik megkapja a másolatot
+     */
     @Override
-    public void Create(Virologus v) {
-        Recept_temp = new boolean[Recept.size()];
-        for (int i = 0; i<Recept.size(); i++){
-            Recept_temp[i] = false;
-        }
-        for(Anyag a : v.anyagok){
-            a.KellCrafthoz(this);
-        }
-        if(Recept_temp_kiertkelo()){
+    protected void Create_(Virologus v) {
             VitusTánc a_copy = new VitusTánc();
             v.ÁgensMegkapás(a_copy);
-        }
-
     }
 }

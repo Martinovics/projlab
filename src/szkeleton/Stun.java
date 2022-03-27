@@ -13,20 +13,14 @@ public class Stun extends Ágens{
         return a;
     }
 
+    /**
+     * Stun másolatot átad v Virológusnak
+     * @param v Virológus, amelyik megkapja a másolatot
+     */
     @Override
-    public void Create(Virologus v) {
-        Recept_temp = new boolean[Recept.size()];
-        for (int i = 0; i<Recept.size(); i++){
-            Recept_temp[i] = false;
-        }
-        for(Anyag a : v.anyagok){
-            a.KellCrafthoz(this);
-        }
-        if(Recept_temp_kiertkelo()){
-            Stun a_copy = new Stun();
-            v.ÁgensMegkapás(a_copy);
-        }
-
+    protected void Create_(Virologus v) {
+        Stun a_copy = new Stun();
+        v.ÁgensMegkapás(a_copy);
     }
 
     @Override

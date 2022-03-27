@@ -24,19 +24,13 @@ public class Emlékezettörlés extends  Ágens{
         return a;
     }
 
+    /**
+     * Emlékezettörlés másolatot átad v Virológusnak
+     * @param v Virológus, amelyik megkapja a másolatot
+     */
     @Override
-    public void Create(Virologus v) {
-        Recept_temp = new boolean[Recept.size()];
-        for (int i = 0; i<Recept.size(); i++){
-            Recept_temp[i] = false;
-        }
-        for(Anyag a : v.anyagok){
-            a.KellCrafthoz(this);
-        }
-        if(Recept_temp_kiertkelo()){
-            Emlékezettörlés a_copy = new Emlékezettörlés();
-            v.ÁgensMegkapás(a_copy);
-        }
-
+    protected void Create_(Virologus v) {
+        Emlékezettörlés a_copy = new Emlékezettörlés();
+        v.ÁgensMegkapás(a_copy);
     }
 }

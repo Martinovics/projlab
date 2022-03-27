@@ -23,7 +23,7 @@ public class Virologus implements Steppable {
     public boolean AnyagMegkapás(Anyag a){
 
     }
-    public boolean TárgyMEgkapés(Item i){
+    public boolean TárgyMegkapás(Item i){
 
     }
     public boolean ÁgensMegkapás(Ágens a){

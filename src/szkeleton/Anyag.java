@@ -1,13 +1,17 @@
 package Szkeleton;
 
-public abstract class Anyag {
+public class Anyag implements Cucc {
 
-    public abstract void KellCrafthoz(Ágens a);
+
+    public boolean KellCrafthoz(Ágens a){
+        return true;
+    }
     public void RemoveCucc(Virologus v){
-        v.RemoveCuc((Cucc) this);
+        v.RemoveCuc(this);
     }
     public boolean AnyagÁtadás(Virologus v){
-        v.TárgyMegkapás(this);
+        v.AnyagMegkapás(this);
+        return true;
     }
 
     public boolean equals(Anyag a) {

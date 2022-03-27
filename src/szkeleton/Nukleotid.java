@@ -2,8 +2,11 @@ package Szkeleton;
 
 public class Nukleotid extends  Anyag{
     @Override
-    public void KellCrafthoz(Ágens a) {
-        a.NukleotidVisit(this);
+    public boolean KellCrafthoz(Ágens a) {
+        if(a.NukleotidVisit(this)){
+            return true;
+        }
+        return false;
     }
 
     @Override

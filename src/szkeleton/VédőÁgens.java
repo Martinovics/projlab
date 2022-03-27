@@ -36,23 +36,14 @@ public class VédőÁgens extends Ágens{
         //AnitEffekt nem csinál semmit
     }
 
+    /**
+     * VédőÁgens másolatot átad v Virológusnak
+     * @param v Virológus, amelyik megkapja a másolatot
+     */
     @Override
-    public void Create(Virologus v) {
-        Recept_temp = new boolean[Recept.size()];
-        for (int i = 0; i<Recept.size(); i++){
-            Recept_temp[i] = false;
-        }
-        for(Anyag a : v.anyagok){
-            a.KellCrafthoz(this);
-        }
-        if(Recept_temp_kiertkelo()){
-            for(Anyag a : v.anyagok){
-                a.equals(Recept)
-            }
-            VédőÁgens a_copy = new VédőÁgens();
-            v.ÁgensMegkapás(a_copy);
-        }
-
+    protected void Create_(Virologus v) {
+        VédőÁgens a_copy = new VédőÁgens();
+        v.ÁgensMegkapás(a_copy);
     }
 
 }

@@ -22,6 +22,8 @@ public class NullÁgens extends Ágens{
 
     @Override
     public void Create(Virologus v){}
+    @Override
+    protected void Create_(Virologus v){}
 
     public boolean equals(Ágens a){
         return  false;
