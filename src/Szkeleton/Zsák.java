@@ -8,7 +8,7 @@ public class Zsák extends Item{
     */
     @Override
     public void AntiEffekt(Virologus v) {
-        v.Ágens[].size-=9;
+        v.itemCapacity -= 9;
     }
     /**
     *A TárgyMegkapás() végén hívódik, amikor a Virológus felvette az Itemet. A zsák +9 férőhelyet ad a virológusnak.
@@ -17,7 +17,7 @@ public class Zsák extends Item{
     */
     @Override
     public void Effekt(Virologus v) {
-        v.Ágens[].size+=9;
+        v.itemCapacity+=9;
     }
     /**
     *Meghívódáskor “a” ágenssel tér vissza.
