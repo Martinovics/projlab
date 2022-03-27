@@ -55,11 +55,14 @@ public class Virologus implements Steppable {
 
         return true;
     }
+
     public boolean BuffMegkapás(Ágens a){
         this.buff.add(a);
         a.Effekt(this);
         return true;
     }
+
+
 
     public void RemoveBuff(Ágens a){
         a.AntiEffekt(this);
@@ -67,7 +70,7 @@ public class Virologus implements Steppable {
     }
 
 
-    public void ÁgensKenés(Virologus v, Ágens a){}
+
 
     public void RemoveCucc(Cucc c){
         try{
@@ -201,15 +204,40 @@ public class Virologus implements Steppable {
         this.LépésViselkedés=s;
     }
 
+
+
+    public void ÁgensKenés(Virologus v, Ágens a){
+        this.ágensek.remove(a);
+        Bekenődés(this,a);
+    }
+
+
     public void Bekenődés(Virologus v, Ágens a){
 
+
+
+        for (int i = 0; i < v.felszerelés.size(); i++) {
+            a=this.felszerelés.get(i).BekendőésEffket(v,a);
+        }
+
+        for (int i = 0; i < v.buff.size(); i++) {
+            a=this.buff.get(i).BekendőésEffekt(a);
+        }
+
+        a.BuffÁtadás(this);
+        //this.BuffMegkapás(a);
+
+        
     }
+
+
     public void overwhelmingBekenődés(Ágens a){
+        a.BuffÁtadás(this);
 
     }
     public void EndRound(){
 
-        System.out.println("");
+        System.out.println("Endround meghívva");
     }
 
 
