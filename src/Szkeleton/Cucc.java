@@ -1,7 +1,6 @@
 package Szkeleton;
 
 public interface Cucc {
-
     /**
      * @author Golyha Tamás
      * ezt a függvényt valósítják meg a Cucc interfacet megvalósító osztályok

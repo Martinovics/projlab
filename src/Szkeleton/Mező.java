@@ -1,27 +1,14 @@
 package Szkeleton;
-
-import java.util.*;
-
-
-
-
-
+import java.util.ArrayList;
 
 public class Mező {
-
-
-    private List<Virologus> virologusok;  // valahol tárolni kell, hogy kik tartózkodnak a Mezőn
-    public List<Mező> szomszédok;
-
-
-
+    private ArrayList<Virologus> virologusok;  // valahol tárolni kell, hogy kik tartózkodnak a Mezőn
+    public ArrayList<Mező> szomszédok;
 
     public Mező() {
         this.virologusok = new ArrayList<>();
         this.szomszédok = new ArrayList<>();
     }
-
-
 
     /*
     * A virológus egy új mezőre léptetése
@@ -30,16 +17,8 @@ public class Mező {
     * @return void
     */
     public void AcceptViro(Virologus v) {
-
         this.virologusok.add(v);
-
-        for (Mező mezo : this.szomszédok) {  // kitöröljük a virológust szomszédos mezőről (mert csak onnan jöhetett)
-            mezo.RemoveViro(v);
-        }
-
     }
-
-
 
     /*
     * Törli a megadott virológust a mezőről.
@@ -51,15 +30,10 @@ public class Mező {
         this.virologusok.remove(v);
     }
 
-
-
-
     /*
     * Az anyag és item felvételére szolgáló függvény
     */
     public void CuccÁtadás(Virologus v) { }
-
-
 
 
     /*

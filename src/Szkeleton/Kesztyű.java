@@ -3,17 +3,15 @@ package Szkeleton;
 public class Kesztyű extends Item{
 
     @Override
-    public void AntiEffekt(Virologus v) {
-        super.AntiEffekt(v);
-    }
+    public void AntiEffekt(Virologus v) {}
 
     @Override
-    public void Effekt(Virologus v) {
-        super.Effekt(v);
-    }
+    public void Effekt(Virologus v) { }
 
     @Override
-    public Ágens BekendőésEffket(Virologus v, Ágens a) {
-        return super.BekendőésEffket(v, a);
+    public Ágens BekenődésEffket(Virologus v, Ágens a) {
+        v.overwhelmingBekenődés(a);
+        return Game.ReturnN();
+
     }
 }

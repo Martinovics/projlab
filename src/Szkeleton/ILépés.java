@@ -7,5 +7,4 @@ public interface ILépés {
      * @param v Virologus
      */
     void Lépés(Virologus v);
-
 }

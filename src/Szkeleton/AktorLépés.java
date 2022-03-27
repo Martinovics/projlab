@@ -2,7 +2,6 @@ package Szkeleton;
 
 public class AktorLépés implements ILépés{
 
-
     /**
      * @author Golyha Tamás
      * v virológus átlép egyik szomszédos mezőre amit a játékos választ ki
@@ -16,6 +15,5 @@ public class AktorLépés implements ILépés{
         if(v.mező.szomszédok.contains(kiválasztottMező)){
             v.move(kiválasztottMező);
         }
-        
     }
 }

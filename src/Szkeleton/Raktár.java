@@ -3,24 +3,14 @@ package Szkeleton;
 import java.util.*;
 
 
-
-
-
-
 public class Raktár extends Mező {
 
 
     private List<Anyag> anyag;  // egyelemű lista
 
-
-
-
     public Raktár() {
         this.anyag = new ArrayList<>();
     }
-
-
-
 
     /*
     * Anyagot ad a mezőhöz (egy mezőn, egy anyag)
@@ -33,9 +23,6 @@ public class Raktár extends Mező {
             this.anyag.add(a);
         }
     }
-
-
-
 
     /*
     * Törli az anyagot a mezőről
@@ -69,8 +56,4 @@ public class Raktár extends Mező {
             RemoveAnyag();
         }
     }
-
-
-
-
 }
