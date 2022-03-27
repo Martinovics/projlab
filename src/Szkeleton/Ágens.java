@@ -1,5 +1,4 @@
 package Szkeleton;
-
 import java.util.ArrayList;
 
 enum State{

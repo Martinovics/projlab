@@ -12,5 +12,6 @@ public class Kesztyű extends Item{
     public Ágens BekenődésEffket(Virologus v, Ágens a) {
         v.overwhelmingBekenődés(a);
         return Game.ReturnN();
+
     }
 }

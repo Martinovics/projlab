@@ -27,5 +27,6 @@ public class Zsák extends Item{
     @Override
     public Ágens BekenődésEffket(Virologus v, Ágens a) {
         return a;
+
     }
 }

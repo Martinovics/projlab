@@ -49,4 +49,5 @@ public class Óvóhely extends Mező {
         if (this.item.get(0).ItemÁtadás(v)) {
             RemoveItem();
         }
+    }
 }

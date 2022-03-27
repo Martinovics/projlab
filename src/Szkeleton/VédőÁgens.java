@@ -1,7 +1,6 @@
 package Szkeleton;
 
 public class VédőÁgens extends Ágens{
-  
     public VédőÁgens(){
         super(1,5);
         Recept.add(new Aminosav());

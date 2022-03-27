@@ -2,8 +2,8 @@ package Szkeleton;
 import java.util.ArrayList;
 
 public class Mező {
-    private List<Virologus> virologusok;  // valahol tárolni kell, hogy kik tartózkodnak a Mezőn
-    public List<Mező> szomszédok;
+    private ArrayList<Virologus> virologusok;  // valahol tárolni kell, hogy kik tartózkodnak a Mezőn
+    public ArrayList<Mező> szomszédok;
 
     public Mező() {
         this.virologusok = new ArrayList<>();

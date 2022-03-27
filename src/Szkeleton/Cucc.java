@@ -1,5 +1,10 @@
 package Szkeleton;
 
 public interface Cucc {
-    public void RemoveCucc(Virologus v);
+    /**
+     * @author Golyha Tamás
+     * ezt a függvényt valósítják meg a Cucc interfacet megvalósító osztályok
+     * @param v Virologus
+     */
+    public void removeCucc(Virologus virologus);
 }

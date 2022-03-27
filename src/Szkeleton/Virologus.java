@@ -1,4 +1,5 @@
 package Szkeleton;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -8,6 +9,7 @@ public class Virologus implements Steppable {
     /**@author Balogh Dávid
      * A virológus attribútumai
      * */
+
     public ArrayList<Anyag> anyagok;
     public ArrayList<Ágens> kódok;
     public ArrayList<Ágens> ágensek;
@@ -16,6 +18,7 @@ public class Virologus implements Steppable {
     public ArrayList<Item> felszerelés;
     public ILépés LépésViselkedés;
     private ArrayList<Cucc> rabolható;
+
     public int itemCapacity;
 
     /**
@@ -49,6 +52,7 @@ public class Virologus implements Steppable {
      * @author Balogh Dávid
      * Valamilyen dolgot egy mezőről felveszünk és eltárolunk
      * */
+
     public void CuccFelvétel(){
         this.mező.CuccÁtadás(this);
     }
@@ -58,15 +62,18 @@ public class Virologus implements Steppable {
      * Valamilyen kódot eltárolunk
      * @param a Ágens
      * */
+
     public boolean GénMegkapás(Ágens a){
         this.kódok.add(a);
         return true;
     }
+
     /**
      * @author Balogh Dávid
      * Valamilyen anyagot eltárolunk
      * @param a Anyag
      * */
+
     public boolean AnyagMegkapás(Anyag a){
         this.anyagok.add(a);
         return true;
@@ -76,6 +83,7 @@ public class Virologus implements Steppable {
      * Valamilyen tárgyat eltárolunk
      * @param i Item
      * */
+
     public boolean TárgyMegkapás(Item i){
         this.felszerelés.add(i);
         i.Effekt(this);
@@ -180,7 +188,6 @@ public class Virologus implements Steppable {
         this.kódok.removeAll(kódok);
     }
 
-
     /**
      * @author Balogh Dávid
      * LépésViselkedéstől függően lépünk a virológussal
@@ -197,7 +204,6 @@ public class Virologus implements Steppable {
         this.LépésViselkedés=s;
     }
 
-
     /**
      * @author Balogh Dávid
      * ELindítja a kenés folyamatát
@@ -208,7 +214,6 @@ public class Virologus implements Steppable {
         this.ágensek.remove(a);
         Bekenődés(this,a);
     }
-
 
     /**
      * @author Balogh Dávid
@@ -225,14 +230,9 @@ public class Virologus implements Steppable {
         for (int i = 0; i < v.buff.size(); i++) {
             a=this.buff.get(i).BekenődésEffekt(a);
         }
-
         a.BuffÁtadás(this);
         //this.BuffMegkapás(a);
-
-        
     }
-
-
 
     /**
      * @author Balogh Dávid
@@ -243,7 +243,6 @@ public class Virologus implements Steppable {
         a.BuffÁtadás(this);
 
     }
-
     /**
      * @author Balogh Dávid
      * Kör vége
@@ -277,5 +276,4 @@ public class Virologus implements Steppable {
     public void AnyagVisit(Anyag a){
         System.out.println("Anyag visitelve lett");
     }
-
 }

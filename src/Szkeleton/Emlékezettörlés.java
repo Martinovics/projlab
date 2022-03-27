@@ -1,7 +1,7 @@
 package Szkeleton;
 
 public class Emlékezettörlés extends  Ágens{
-
+  
     public Emlékezettörlés(){
         super(0, 5);
         Recept.add(new Nukleotid());
@@ -16,7 +16,6 @@ public class Emlékezettörlés extends  Ágens{
 
     @Override
     public void Effekt(Virologus v) {
-
         v.mindentElfelejt();
     }
 
