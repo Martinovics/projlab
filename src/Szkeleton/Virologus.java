@@ -15,6 +15,9 @@ public class Virologus implements Steppable {
     private ArrayList<Cucc> rabolható;
 
 
+    public int itemCapacity;
+
+
 
     public void move(Mező m){
 
@@ -227,6 +230,8 @@ public class Virologus implements Steppable {
 
         
     }
+
+
 
 
     public void overwhelmingBekenődés(Ágens a){
