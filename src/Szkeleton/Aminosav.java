@@ -2,10 +2,10 @@ package Szkeleton;
 
 public class Aminosav extends Anyag{
     public Aminosav(){
-       // System.out.println(this +" létrejött");
+       // System.out.println(this +" letrejott");
     }
     @Override
-    public boolean KellCrafthoz(Ágens a) {
+    public boolean KellCrafthoz(agens a) {
         if (a.AminosavVisit(this)) {
             return true;
         }

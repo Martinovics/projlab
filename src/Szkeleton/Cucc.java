@@ -2,11 +2,11 @@ package Szkeleton;
 
 public interface Cucc {
     /**
-     * @author Golyha Tamás
-     * ezt a függvényt valósítják meg a Cucc interfacet megvalósító osztályok
+     * @author Golyha Tamas
+     * ezt a fuggvenyt valositjak meg a Cucc interfacet megvalosito osztalyok
      * @param v Virologus
      */
     public void removeCucc(Virologus v);
 
-    public boolean CuccÁtadás(Virologus v);
+    public boolean Cuccatadas(Virologus v);
 }

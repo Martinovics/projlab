@@ -1,28 +1,28 @@
 package Szkeleton;
 
-public class Labor extends Mező {
-    private Ágens kód;
+public class Labor extends Mezo {
+    private agens kod;
 
     public Labor() {
-        System.out.println(this + " létrejött");
-        this.kód = new NullÁgens();  // majd a game később létrehoz egy normális ágenst az AddKód-al
+        System.out.println(this + " letrejott");
+        this.kod = new Nullagens();  // majd a game kesobb letrehoz egy normalis agenst az AddKod-al
     }
 
     /*
-    * Hozzáadja a mezőhöz a megadott ágenst
+    * Hozzaadja a mezohoz a megadott agenst
     *
-    * @param a Ágens, amit hozzá szeretnénk adni a mezőhöz
+    * @param a agens, amit hozza szeretnenk adni a mezohoz
     * @return void
     */
-    public void AddKód(Ágens agens) {  // hozzáad egy random kódot
-        System.out.println(this + "átadta a kódot");
-        this.kód = agens;
+    public void AddKod(agens agens) {  // hozzaad egy random kodot
+        System.out.println(this + "atadta a kodot");
+        this.kod = agens;
     }
 
     @Override
-    public void CuccÁtadás(Virologus v) {
-        System.out.println("Labor átadta a kódot.");
-        kód.KódÁtadás(v);
+    public void Cuccatadas(Virologus v) {
+        System.out.println("Labor atadta a kodot.");
+        kod.Kodatadas(v);
     }
 
     @Override

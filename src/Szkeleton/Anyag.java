@@ -3,15 +3,15 @@ package Szkeleton;
 public class Anyag implements Cucc {
 
     public Anyag(){
-       System.out.println(this +" létrejött");
+       System.out.println(this +" letrejott");
     }
-    public boolean KellCrafthoz(Ágens a){
+    public boolean KellCrafthoz(agens a){
         return true;
     }
 
-    public boolean AnyagÁtadás(Virologus v){
-        v.AnyagMegkapás(this);
-        System.out.println(this+" átadódott");
+    public boolean Anyagatadas(Virologus v){
+        v.AnyagMegkapas(this);
+        System.out.println(this+" atadodott");
         return true;
     }
 
@@ -28,18 +28,18 @@ public class Anyag implements Cucc {
 
     /**
      * @param v
-     * @author Golyha Tamás
-     * ezt a függvényt valósítják meg a Cucc interfacet megvalósító osztályok
+     * @author Golyha Tamas
+     * ezt a fuggvenyt valositjak meg a Cucc interfacet megvalosito osztalyok
      */
     @Override
     public void removeCucc(Virologus v) {
         v.AnyagVisit(this);
-        System.out.println(this +" elvevődött");
+        System.out.println(this +" elvevodott");
     }
 
     @Override
-    public boolean CuccÁtadás(Virologus v) {
-        v.AnyagMegkapás(this);
+    public boolean Cuccatadas(Virologus v) {
+        v.AnyagMegkapas(this);
         return true;
     }
 

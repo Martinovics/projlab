@@ -1,496 +1,494 @@
 package Szkeleton;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class Game {
-    public static NullÁgens n;
-    public static VitusLépés vitusLépés;
-    public static AktorLépés aktorLépés;
-    public static StunLépés stunLépés;
+    public static Nullagens n;
+    public static VitusLepes vitusLepes;
+    public static AktorLepes aktorLepes;
+    public static StunLepes stunLepes;
 
     public static ArrayList<Steppable> steppables;
-    public static ArrayList<Mező> mezők;
+    public static ArrayList<Mezo> mezok;
     /**
-     * Játékban lévő gének száma.
+     * Jatekban levo genek szama.
      */
-    private static int NoGén;
+    private static int NoGen;
 
 
 
     public static void start(){ }
-    private static void Kilpés(){
+    private static void Kilpes(){
         System.exit(0);
     }
-    public static NullÁgens ReturnN(){
+    public static Nullagens ReturnN(){
         return n;
     }
-    public static VitusLépés getVitusLépés(){
-        return vitusLépés;
+    public static VitusLepes getVitusLepes(){
+        return vitusLepes;
     }
-    public static AktorLépés getAktorLépés(){
-        return aktorLépés;
+    public static AktorLepes getAktorLepes(){
+        return aktorLepes;
     }
-    public static StunLépés getStunLépés(){
-        return stunLépés;
+    public static StunLepes getStunLepes(){
+        return stunLepes;
     }
-    public static void Következő(){
+    public static void Kovetkezo(){
 
         //return steppables.get();
     }
     public static void AddSteppable(Steppable s){}
     public static void RemoveSteppable(Steppable s){}
     public static void end(Virologus v){
-        System.out.println("Vége: "+ v + "győzőtt");
+        System.out.println("Vege: "+ v + "gyozott");
     }
 
-    private static void Virológus_mezőre_lép(){
+    private static void Virologus_mezore_lep(){
         Virologus v = new Virologus();
-        Mező m1 = new Mező();
-        Mező m2 = new Mező();
-        v.PutOnMező(m1);
+        Mezo m1 = new Mezo();
+        Mezo m2 = new Mezo();
+        v.PutOnMezo(m1);
         m1.AcceptViro(v);
         v.move(m2);
     }
-    private static void Virológus_egy_óvóhelyre_lép(){
+    private static void Virologus_egy_ovohelyre_lep(){
         Virologus v = new Virologus();
-        Mező m1 = new Mező();
-        Óvóhely m2 = new Óvóhely();
-        v.PutOnMező(m1);
+        Mezo m1 = new Mezo();
+        ovohely m2 = new ovohely();
+        v.PutOnMezo(m1);
         m1.AcceptViro(v);
         v.move(m2);
     }
-    private static void Virológus_egy_labor_mezőre_lép(){
+    private static void Virologus_egy_labor_mezore_lep(){
         Virologus v = new Virologus();
-        Mező m1 = new Mező();
+        Mezo m1 = new Mezo();
         Labor m2 = new Labor();
-        v.PutOnMező(m1);
+        v.PutOnMezo(m1);
         m1.AcceptViro(v);
         v.move(m2);
     }
-    private static void Virológus_egy_raktár_mezőre_lép(){
+    private static void Virologus_egy_raktar_mezore_lep(){
         Virologus v = new Virologus();
-        Mező m1 = new Mező();
-        Raktár m2 = new Raktár();
-        v.PutOnMező(m1);
+        Mezo m1 = new Mezo();
+        Raktar m2 = new Raktar();
+        v.PutOnMezo(m1);
         m1.AcceptViro(v);
         v.move(m2);
     }
-    private static void Stun_lépés(){
+    private static void Stun_lepes(){
         Virologus v = new Virologus();
-        Mező m1 = new Mező();
-        v.PutOnMező(m1);
+        Mezo m1 = new Mezo();
+        v.PutOnMezo(m1);
         m1.AcceptViro(v);
-        v.setLépésBehaviour(Game.getStunLépés());
+        v.setLepesBehaviour(Game.getStunLepes());
         v.Step();
     }
-    private static void Vitus_Lépés_mező(){
+    private static void Vitus_Lepes_mezo(){
         Virologus v = new Virologus();
-        Mező m1 = new Mező();
-        Mező m2 = new Mező();
-        m1.szomszédok.add(m2);
-        v.PutOnMező(m1);
+        Mezo m1 = new Mezo();
+        Mezo m2 = new Mezo();
+        m1.szomszedok.add(m2);
+        v.PutOnMezo(m1);
         m1.AcceptViro(v);
-        v.setLépésBehaviour(Game.getVitusLépés());
+        v.setLepesBehaviour(Game.getVitusLepes());
         v.Step();
     }
-    private static void Vitus_Lépés_labor(){
+    private static void Vitus_Lepes_labor(){
         Virologus v = new Virologus();
-        Mező m1 = new Mező();
+        Mezo m1 = new Mezo();
         Labor m2 = new Labor();
-        m1.szomszédok.add(m2);
+        m1.szomszedok.add(m2);
         m1.AcceptViro(v);
-        v.PutOnMező(m1);
-        v.setLépésBehaviour(Game.getVitusLépés());
+        v.PutOnMezo(m1);
+        v.setLepesBehaviour(Game.getVitusLepes());
         v.Step();
     }
-    private static void Vitus_Lépés_óvóhely(){
+    private static void Vitus_Lepes_ovohely(){
         Virologus v = new Virologus();
-        Mező m1 = new Mező();
-        Óvóhely m2 = new Óvóhely();
-        m1.szomszédok.add(m2);
-        v.PutOnMező(m1);
+        Mezo m1 = new Mezo();
+        ovohely m2 = new ovohely();
+        m1.szomszedok.add(m2);
+        v.PutOnMezo(m1);
         m1.AcceptViro(v);
-        v.setLépésBehaviour(Game.getVitusLépés());
+        v.setLepesBehaviour(Game.getVitusLepes());
         v.Step();
     }
-    private static void Vitus_Lépés_raktár(){
+    private static void Vitus_Lepes_raktar(){
         Virologus v = new Virologus();
-        Mező m1 = new Mező();
-        Raktár m2 = new Raktár();
-        m1.szomszédok.add(m2);
-        v.PutOnMező(m1);
+        Mezo m1 = new Mezo();
+        Raktar m2 = new Raktar();
+        m1.szomszedok.add(m2);
+        v.PutOnMezo(m1);
         m1.AcceptViro(v);
-        v.setLépésBehaviour(Game.getVitusLépés());
+        v.setLepesBehaviour(Game.getVitusLepes());
         v.Step();
     }
-    private static void Nukleotid_felvétel_raktárból(){
+    private static void Nukleotid_felvetel_raktarbol(){
         Virologus v = new Virologus();
-        Raktár r = new Raktár();
+        Raktar r = new Raktar();
         Nukleotid n = new Nukleotid();
-        v.PutOnMező(r);
+        v.PutOnMezo(r);
         r.AddAnyag(n);
-        v.CuccFelvétel();
+        v.CuccFelvetel();
     }
-    private static void Aminosav_felvétel_raktárból(){
+    private static void Aminosav_felvetel_raktarbol(){
         Virologus v = new Virologus();
-        Raktár r = new Raktár();
+        Raktar r = new Raktar();
         Aminosav n = new Aminosav();
-        v.PutOnMező(r);
+        v.PutOnMezo(r);
         r.AddAnyag(n);
-        v.CuccFelvétel();
+        v.CuccFelvetel();
     }
-    private static void Nukleotid_rablás_másik_virológustól(){
+    private static void Nukleotid_rablas_masik_virologustol(){
         Virologus v1 = new Virologus();
         Virologus v2 = new Virologus();
         Nukleotid c = new Nukleotid();
-        v2.AnyagMegkapás(c);
-        v1.TárgyElvétel(v2,c);
+        v2.AnyagMegkapas(c);
+        v1.TargyElvetel(v2,c);
     }
-    private static void Aminosav_rablás_másik_virológustól(){
+    private static void Aminosav_rablas_masik_virologustol(){
         Virologus v1 = new Virologus();
         Virologus v2 = new Virologus();
         Aminosav c = new Aminosav();
-        v2.AnyagMegkapás(c);
-        v1.TárgyElvétel(v2,c);
+        v2.AnyagMegkapas(c);
+        v1.TargyElvetel(v2,c);
     }
-    private static void Védőköpeny_felvétel_óvóhelyről(){
+    private static void Vedokopeny_felvetel_ovohelyrol(){
         Virologus v = new Virologus();
-        Óvóhely o = new Óvóhely();
-        Köpeny i = new Köpeny();
-        v.PutOnMező(o);
-        v.CuccFelvétel();
+        ovohely o = new ovohely();
+        Kopeny i = new Kopeny();
+        v.PutOnMezo(o);
+        v.CuccFelvetel();
     }
-    private static void Zsák_felvétel_óvóhelyről(){
+    private static void Zsak_felvetel_ovohelyrol(){
         Virologus v = new Virologus();
-        Óvóhely o = new Óvóhely();
-        Zsák i = new Zsák();
-        v.PutOnMező(o);
-        v.CuccFelvétel();
+        ovohely o = new ovohely();
+        Zsak i = new Zsak();
+        v.PutOnMezo(o);
+        v.CuccFelvetel();
     }
-    private static void Kesztyű_felvétel_óvóhelyről(){
+    private static void Kesztyu_felvetel_ovohelyrol(){
         Virologus v = new Virologus();
-        Óvóhely o = new Óvóhely();
-        Kesztyű i = new Kesztyű();
-        v.PutOnMező(o);
-        v.CuccFelvétel();
+        ovohely o = new ovohely();
+        Kesztyu i = new Kesztyu();
+        v.PutOnMezo(o);
+        v.CuccFelvetel();
     }
-    private static void Védőköpeny_rablás_virológustól(){
+    private static void Vedokopeny_rablas_virologustol(){
         Virologus v1 = new Virologus();
         Virologus v2 = new Virologus();
-        Köpeny c = new Köpeny();
-        v2.TárgyMegkapás(c);
-        v1.TárgyElvétel(v2,c);
+        Kopeny c = new Kopeny();
+        v2.TargyMegkapas(c);
+        v1.TargyElvetel(v2,c);
     }
-    private static void Zsák_rablás_virológustól(){
+    private static void Zsak_rablas_virologustol(){
         Virologus v1 = new Virologus();
         Virologus v2 = new Virologus();
-        Zsák c = new Zsák();
-        v2.TárgyMegkapás(c);
-        v1.TárgyElvétel(v2,c);
+        Zsak c = new Zsak();
+        v2.TargyMegkapas(c);
+        v1.TargyElvetel(v2,c);
     }
-    private static void Kesztyű_rablás_virológustól(){
+    private static void Kesztyu_rablas_virologustol(){
         Virologus v1 = new Virologus();
         Virologus v2 = new Virologus();
-        Kesztyű c = new Kesztyű();
-        v2.TárgyMegkapás(c);
-        v1.TárgyElvétel(v2,c);
+        Kesztyu c = new Kesztyu();
+        v2.TargyMegkapas(c);
+        v1.TargyElvetel(v2,c);
     }
-    private static void Virológus_másik_virológust_beken_bénító_ágenssel(){
+    private static void Virologus_masik_virologust_beken_benoto_agenssel(){
         Virologus v1 = new Virologus();
         Virologus v2 = new Virologus();
         Stun s = new Stun();
-        v1.ÁgensMegkapás(s);
-        Köpeny vk = new Köpeny();
-        Kesztyű k = new Kesztyű();
-        Zsák zs = new Zsák();
-        VitusTánc vt = new VitusTánc();
+        v1.agensMegkapas(s);
+        Kopeny vk = new Kopeny();
+        Kesztyu k = new Kesztyu();
+        Zsak zs = new Zsak();
+        VitusTanc vt = new VitusTanc();
         Stun st = new Stun();
-        Emlékezettörlés ei = new Emlékezettörlés();
-        VédőÁgens vé = new VédőÁgens();
-        v2.TárgyMegkapás(vk);
-        v2.TárgyMegkapás(k);
-        v2.TárgyMegkapás(zs);
-        v2.BuffMegkapás(vt);
-        v2.BuffMegkapás(st);
-        v2.BuffMegkapás(ei);
-        v2.BuffMegkapás(vé);
-        v1.ÁgensKenés(v2,s);
+        Emlekezettorles ei = new Emlekezettorles();
+        Vedoagens ve = new Vedoagens();
+        v2.TargyMegkapas(vk);
+        v2.TargyMegkapas(k);
+        v2.TargyMegkapas(zs);
+        v2.BuffMegkapas(vt);
+        v2.BuffMegkapas(st);
+        v2.BuffMegkapas(ei);
+        v2.BuffMegkapas(ve);
+        v1.agensKenes(v2,s);
     }
-    private static void Virológus_másik_virológust_beken_vitustánc_ágenssel(){
+    private static void Virologus_masik_virologust_beken_vitustanc_agenssel(){
         Virologus v1 = new Virologus();
         Virologus v2 = new Virologus();
-        VitusTánc s = new VitusTánc();
-        v1.ÁgensMegkapás(s);
-        Köpeny vk = new Köpeny();
-        Kesztyű k = new Kesztyű();
-        Zsák zs = new Zsák();
-        VitusTánc vt = new VitusTánc();
+        VitusTanc s = new VitusTanc();
+        v1.agensMegkapas(s);
+        Kopeny vk = new Kopeny();
+        Kesztyu k = new Kesztyu();
+        Zsak zs = new Zsak();
+        VitusTanc vt = new VitusTanc();
         Stun st = new Stun();
-        Emlékezettörlés ei = new Emlékezettörlés();
-        VédőÁgens vé = new VédőÁgens();
-        v2.TárgyMegkapás(vk);
-        v2.TárgyMegkapás(k);
-        v2.TárgyMegkapás(zs);
-        v2.BuffMegkapás(vt);
-        v2.BuffMegkapás(st);
-        v2.BuffMegkapás(ei);
-        v2.BuffMegkapás(vé);
-        v1.ÁgensKenés(v2,s);
+        Emlekezettorles ei = new Emlekezettorles();
+        Vedoagens ve = new Vedoagens();
+        v2.TargyMegkapas(vk);
+        v2.TargyMegkapas(k);
+        v2.TargyMegkapas(zs);
+        v2.BuffMegkapas(vt);
+        v2.BuffMegkapas(st);
+        v2.BuffMegkapas(ei);
+        v2.BuffMegkapas(ve);
+        v1.agensKenes(v2,s);
     }
-    private static void Virológus_másik_virológust_beken_védő_ágenssel(){
+    private static void Virologus_masik_virologust_beken_vedo_agenssel(){
         Virologus v1 = new Virologus();
         Virologus v2 = new Virologus();
-        VédőÁgens s = new VédőÁgens();
-        v1.ÁgensMegkapás(s);
-        Köpeny vk = new Köpeny();
-        Kesztyű k = new Kesztyű();
-        Zsák zs = new Zsák();
-        VitusTánc vt = new VitusTánc();
+        Vedoagens s = new Vedoagens();
+        v1.agensMegkapas(s);
+        Kopeny vk = new Kopeny();
+        Kesztyu k = new Kesztyu();
+        Zsak zs = new Zsak();
+        VitusTanc vt = new VitusTanc();
         Stun st = new Stun();
-        Emlékezettörlés ei = new Emlékezettörlés();
-        VédőÁgens vé = new VédőÁgens();
-        v2.TárgyMegkapás(vk);
-        v2.TárgyMegkapás(k);
-        v2.TárgyMegkapás(zs);
-        v2.BuffMegkapás(vt);
-        v2.BuffMegkapás(st);
-        v2.BuffMegkapás(ei);
-        v2.BuffMegkapás(vé);
-        v1.ÁgensKenés(v2,s);
+        Emlekezettorles ei = new Emlekezettorles();
+        Vedoagens ve = new Vedoagens();
+        v2.TargyMegkapas(vk);
+        v2.TargyMegkapas(k);
+        v2.TargyMegkapas(zs);
+        v2.BuffMegkapas(vt);
+        v2.BuffMegkapas(st);
+        v2.BuffMegkapas(ei);
+        v2.BuffMegkapas(ve);
+        v1.agensKenes(v2,s);
     }
-    private static void Virológus_másik_virológust_beken_emléktörlő_ágenssel(){
+    private static void Virologus_masik_virologust_beken_emlektorlo_agenssel(){
         Virologus v1 = new Virologus();
         Virologus v2 = new Virologus();
-        Emlékezettörlés s = new Emlékezettörlés();
-        v1.ÁgensMegkapás(s);
-        Köpeny vk = new Köpeny();
-        Kesztyű k = new Kesztyű();
-        Zsák zs = new Zsák();
-        VitusTánc vt = new VitusTánc();
+        Emlekezettorles s = new Emlekezettorles();
+        v1.agensMegkapas(s);
+        Kopeny vk = new Kopeny();
+        Kesztyu k = new Kesztyu();
+        Zsak zs = new Zsak();
+        VitusTanc vt = new VitusTanc();
         Stun st = new Stun();
-        Emlékezettörlés ei = new Emlékezettörlés();
-        VédőÁgens vé = new VédőÁgens();
-        v2.TárgyMegkapás(vk);
-        v2.TárgyMegkapás(k);
-        v2.TárgyMegkapás(zs);
-        v2.BuffMegkapás(vt);
-        v2.BuffMegkapás(st);
-        v2.BuffMegkapás(ei);
-        v2.BuffMegkapás(vé);
-        v1.ÁgensKenés(v2,s);
+        Emlekezettorles ei = new Emlekezettorles();
+        Vedoagens ve = new Vedoagens();
+        v2.TargyMegkapas(vk);
+        v2.TargyMegkapas(k);
+        v2.TargyMegkapas(zs);
+        v2.BuffMegkapas(vt);
+        v2.BuffMegkapas(st);
+        v2.BuffMegkapas(ei);
+        v2.BuffMegkapas(ve);
+        v1.agensKenes(v2,s);
     }
-    private static void Virológus_bekeni_magát_bénító_ágenssel(){
+    private static void Virologus_bekeni_magat_benoto_agenssel(){
         Virologus v1 = new Virologus();
         Stun s = new Stun();
-        v1.ÁgensMegkapás(s);
-        Köpeny vk = new Köpeny();
-        Kesztyű k = new Kesztyű();
-        Zsák zs = new Zsák();
-        VitusTánc vt = new VitusTánc();
+        v1.agensMegkapas(s);
+        Kopeny vk = new Kopeny();
+        Kesztyu k = new Kesztyu();
+        Zsak zs = new Zsak();
+        VitusTanc vt = new VitusTanc();
         Stun st = new Stun();
-        Emlékezettörlés ei = new Emlékezettörlés();
-        VédőÁgens vé = new VédőÁgens();
-        v1.TárgyMegkapás(vk);
-        v1.TárgyMegkapás(k);
-        v1.TárgyMegkapás(zs);
-        v1.BuffMegkapás(vt);
-        v1.BuffMegkapás(st);
-        v1.BuffMegkapás(ei);
-        v1.BuffMegkapás(vé);
-        v1.ÁgensKenés(v1,s);
+        Emlekezettorles ei = new Emlekezettorles();
+        Vedoagens ve = new Vedoagens();
+        v1.TargyMegkapas(vk);
+        v1.TargyMegkapas(k);
+        v1.TargyMegkapas(zs);
+        v1.BuffMegkapas(vt);
+        v1.BuffMegkapas(st);
+        v1.BuffMegkapas(ei);
+        v1.BuffMegkapas(ve);
+        v1.agensKenes(v1,s);
     }
-    private static void A_virológus_bekeni_magát_vitustánc_ágenssel(){
+    private static void A_virologus_bekeni_magat_vitustanc_agenssel(){
         Virologus v1 = new Virologus();
-        VitusTánc s = new VitusTánc();
-        v1.ÁgensMegkapás(s);
-        Köpeny vk = new Köpeny();
-        Kesztyű k = new Kesztyű();
-        Zsák zs = new Zsák();
-        VitusTánc vt = new VitusTánc();
+        VitusTanc s = new VitusTanc();
+        v1.agensMegkapas(s);
+        Kopeny vk = new Kopeny();
+        Kesztyu k = new Kesztyu();
+        Zsak zs = new Zsak();
+        VitusTanc vt = new VitusTanc();
         Stun st = new Stun();
-        Emlékezettörlés ei = new Emlékezettörlés();
-        VédőÁgens vé = new VédőÁgens();
-        v1.TárgyMegkapás(vk);
-        v1.TárgyMegkapás(k);
-        v1.TárgyMegkapás(zs);
-        v1.BuffMegkapás(vt);
-        v1.BuffMegkapás(st);
-        v1.BuffMegkapás(ei);
-        v1.BuffMegkapás(vé);
-        v1.ÁgensKenés(v1,s);
+        Emlekezettorles ei = new Emlekezettorles();
+        Vedoagens ve = new Vedoagens();
+        v1.TargyMegkapas(vk);
+        v1.TargyMegkapas(k);
+        v1.TargyMegkapas(zs);
+        v1.BuffMegkapas(vt);
+        v1.BuffMegkapas(st);
+        v1.BuffMegkapas(ei);
+        v1.BuffMegkapas(ve);
+        v1.agensKenes(v1,s);
     }
-    private static void A_virológus_bekeni_magát_védő_ágenssel(){
+    private static void A_virologus_bekeni_magat_vedo_agenssel(){
         Virologus v1 = new Virologus();
-        VédőÁgens s = new VédőÁgens();
-        v1.ÁgensMegkapás(s);
-        Köpeny vk = new Köpeny();
-        Kesztyű k = new Kesztyű();
-        Zsák zs = new Zsák();
-        VitusTánc vt = new VitusTánc();
+        Vedoagens s = new Vedoagens();
+        v1.agensMegkapas(s);
+        Kopeny vk = new Kopeny();
+        Kesztyu k = new Kesztyu();
+        Zsak zs = new Zsak();
+        VitusTanc vt = new VitusTanc();
         Stun st = new Stun();
-        Emlékezettörlés ei = new Emlékezettörlés();
-        VédőÁgens vé = new VédőÁgens();
-        v1.TárgyMegkapás(vk);
-        v1.TárgyMegkapás(k);
-        v1.TárgyMegkapás(zs);
-        v1.BuffMegkapás(vt);
-        v1.BuffMegkapás(st);
-        v1.BuffMegkapás(ei);
-        v1.BuffMegkapás(vé);
-        v1.ÁgensKenés(v1,s);
+        Emlekezettorles ei = new Emlekezettorles();
+        Vedoagens ve = new Vedoagens();
+        v1.TargyMegkapas(vk);
+        v1.TargyMegkapas(k);
+        v1.TargyMegkapas(zs);
+        v1.BuffMegkapas(vt);
+        v1.BuffMegkapas(st);
+        v1.BuffMegkapas(ei);
+        v1.BuffMegkapas(ve);
+        v1.agensKenes(v1,s);
     }
-    private static void Virológus_bekeni_magát_emléktörlő_ágenssel(){
+    private static void Virologus_bekeni_magat_emlektorlo_agenssel(){
         Virologus v1 = new Virologus();
-        Emlékezettörlés s = new Emlékezettörlés();
-        v1.ÁgensMegkapás(s);
-        Köpeny vk = new Köpeny();
-        Kesztyű k = new Kesztyű();
-        Zsák zs = new Zsák();
-        VitusTánc vt = new VitusTánc();
+        Emlekezettorles s = new Emlekezettorles();
+        v1.agensMegkapas(s);
+        Kopeny vk = new Kopeny();
+        Kesztyu k = new Kesztyu();
+        Zsak zs = new Zsak();
+        VitusTanc vt = new VitusTanc();
         Stun st = new Stun();
-        Emlékezettörlés ei = new Emlékezettörlés();
-        VédőÁgens vé = new VédőÁgens();
-        v1.TárgyMegkapás(vk);
-        v1.TárgyMegkapás(k);
-        v1.TárgyMegkapás(zs);
-        v1.BuffMegkapás(vt);
-        v1.BuffMegkapás(st);
-        v1.BuffMegkapás(ei);
-        v1.BuffMegkapás(vé);
-        v1.ÁgensKenés(v1,s);
+        Emlekezettorles ei = new Emlekezettorles();
+        Vedoagens ve = new Vedoagens();
+        v1.TargyMegkapas(vk);
+        v1.TargyMegkapas(k);
+        v1.TargyMegkapas(zs);
+        v1.BuffMegkapas(vt);
+        v1.BuffMegkapas(st);
+        v1.BuffMegkapas(ei);
+        v1.BuffMegkapas(ve);
+        v1.agensKenes(v1,s);
     }
-    private static void Kesztyű_visszadob_bénítóÁgens(){
+    private static void Kesztyu_visszadob_benotoagens(){
         Virologus v2 = new Virologus();
         Virologus v1 = new Virologus();
-        Kesztyű k = new Kesztyű();
+        Kesztyu k = new Kesztyu();
         Stun s = new Stun();
-        v2.TárgyMegkapás(k);
-        v1.ÁgensKenés(v2,s);
+        v2.TargyMegkapas(k);
+        v1.agensKenes(v2,s);
     }
-    private static void Kesztyű_visszadob_védőÁgens(){
+    private static void Kesztyu_visszadob_vedoagens(){
         Virologus v2 = new Virologus();
         Virologus v1 = new Virologus();
-        Kesztyű k = new Kesztyű();
-        VédőÁgens s = new VédőÁgens();
-        v2.TárgyMegkapás(k);
-        v1.ÁgensKenés(v2,s);
+        Kesztyu k = new Kesztyu();
+        Vedoagens s = new Vedoagens();
+        v2.TargyMegkapas(k);
+        v1.agensKenes(v2,s);
     }
-    private static void Kesztyű_visszadob_Vitustánc(){
+    private static void Kesztyu_visszadob_Vitustanc(){
         Virologus v2 = new Virologus();
         Virologus v1 = new Virologus();
-        Kesztyű k = new Kesztyű();
-        VitusTánc s = new VitusTánc();
-        v2.TárgyMegkapás(k);
-        v1.ÁgensKenés(v2,s);
+        Kesztyu k = new Kesztyu();
+        VitusTanc s = new VitusTanc();
+        v2.TargyMegkapas(k);
+        v1.agensKenes(v2,s);
     }
-    private static void Kesztyű_visszadob_emléktörlőt(){
+    private static void Kesztyu_visszadob_emlektorlot(){
         Virologus v2 = new Virologus();
         Virologus v1 = new Virologus();
-        Kesztyű k = new Kesztyű();
-        Emlékezettörlés s = new Emlékezettörlés();
-        v2.TárgyMegkapás(k);
-        v1.ÁgensKenés(v2,s);
+        Kesztyu k = new Kesztyu();
+        Emlekezettorles s = new Emlekezettorles();
+        v2.TargyMegkapas(k);
+        v1.agensKenes(v2,s);
     }
-    private static void Bénító_ágens_készítés(){
+    private static void Benoto_agens_keszotes(){
         Virologus v = new Virologus();
-/*        v.AnyagMegkapás(new Nukleotid());
-        v.AnyagMegkapás(new Nukleotid());
-        v.AnyagMegkapás(new Nukleotid());
-        v.AnyagMegkapás(new Aminosav());
-        v.AnyagMegkapás(new Aminosav());
-        v.AnyagMegkapás(new Aminosav());*/
+        v.AnyagMegkapas(new Nukleotid());
+        v.AnyagMegkapas(new Nukleotid());
+        v.AnyagMegkapas(new Nukleotid());
+        v.AnyagMegkapas(new Aminosav());
+        v.AnyagMegkapas(new Aminosav());
+        v.AnyagMegkapas(new Aminosav());
         Stun s = new Stun();
-        v.GénMegkapás(s);
-        v.ÁgensElőállít(s);
+        v.GenMegkapas(s);
+        v.agensEloallit(s);
 
     }
-    private static void Vitustánc_készítés(){
+    private static void Vitustanc_keszotes(){
         Virologus v = new Virologus();
-        v.AnyagMegkapás(new Nukleotid());
-        v.AnyagMegkapás(new Nukleotid());
-        v.AnyagMegkapás(new Nukleotid());
-        v.AnyagMegkapás(new Aminosav());
-        v.AnyagMegkapás(new Aminosav());
-        v.AnyagMegkapás(new Aminosav());
-        VitusTánc s = new VitusTánc();
-        v.GénMegkapás(s);
-        v.ÁgensElőállít(s);
+        v.AnyagMegkapas(new Nukleotid());
+        v.AnyagMegkapas(new Nukleotid());
+        v.AnyagMegkapas(new Nukleotid());
+        v.AnyagMegkapas(new Aminosav());
+        v.AnyagMegkapas(new Aminosav());
+        v.AnyagMegkapas(new Aminosav());
+        VitusTanc s = new VitusTanc();
+        v.GenMegkapas(s);
+        v.agensEloallit(s);
     }
-    private static void Védő_ágens_készítés(){
+    private static void Vedo_agens_keszotes(){
         Virologus v = new Virologus();
-        v.AnyagMegkapás(new Nukleotid());
-        v.AnyagMegkapás(new Nukleotid());
-        v.AnyagMegkapás(new Nukleotid());
-        v.AnyagMegkapás(new Aminosav());
-        v.AnyagMegkapás(new Aminosav());
-        v.AnyagMegkapás(new Aminosav());
-        VédőÁgens s = new VédőÁgens();
-        v.GénMegkapás(s);
-        v.ÁgensElőállít(s);
+        v.AnyagMegkapas(new Nukleotid());
+        v.AnyagMegkapas(new Nukleotid());
+        v.AnyagMegkapas(new Nukleotid());
+        v.AnyagMegkapas(new Aminosav());
+        v.AnyagMegkapas(new Aminosav());
+        v.AnyagMegkapas(new Aminosav());
+        Vedoagens s = new Vedoagens();
+        v.GenMegkapas(s);
+        v.agensEloallit(s);
     }
-    private static void Emléktörlő_ágens_készítés(){
+    private static void Emlektorlo_agens_keszotes(){
         Virologus v = new Virologus();
-        v.AnyagMegkapás(new Nukleotid());
-        v.AnyagMegkapás(new Nukleotid());
-        v.AnyagMegkapás(new Nukleotid());
-        v.AnyagMegkapás(new Aminosav());
-        v.AnyagMegkapás(new Aminosav());
-        v.AnyagMegkapás(new Aminosav());
-        Emlékezettörlés s = new Emlékezettörlés();
-        v.GénMegkapás(s);
-        v.ÁgensElőállít(s);
+        v.AnyagMegkapas(new Nukleotid());
+        v.AnyagMegkapas(new Nukleotid());
+        v.AnyagMegkapas(new Nukleotid());
+        v.AnyagMegkapas(new Aminosav());
+        v.AnyagMegkapas(new Aminosav());
+        v.AnyagMegkapas(new Aminosav());
+        Emlekezettorles s = new Emlekezettorles();
+        v.GenMegkapas(s);
+        v.agensEloallit(s);
     }
-    private static void Játék_megnyerése(){
+    private static void Jatek_megnyerese(){
         Virologus v = new Virologus();
-        NoGén = 1;
-        v.GénMegkapás(new Stun());
+        NoGen = 1;
+        v.GenMegkapas(new Stun());
         v.EndRound();
-        if(v.kódok.size() == NoGén){
+        if(v.kodok.size() == NoGen){
             end(v);
         }
-        //Ezt kitalálni
+        //Ezt kitalalni
     }
-    private static void Bénító_kód_tanulás(){
+    private static void Benoto_kod_tanulas(){
         Stun a = new Stun();
         Labor l = new Labor();
-        l.AddKód(a);
+        l.AddKod(a);
         Virologus v = new Virologus();
-        v.PutOnMező(l);
-        v.CuccFelvétel();
+        v.PutOnMezo(l);
+        v.CuccFelvetel();
     }
-    private static void Vitustánc_kód_tanulás(){
-        VitusTánc a = new VitusTánc();
+    private static void Vitustanc_kod_tanulas(){
+        VitusTanc a = new VitusTanc();
         Labor l = new Labor();
-        l.AddKód(a);
+        l.AddKod(a);
         Virologus v = new Virologus();
-        v.PutOnMező(l);
-        v.CuccFelvétel();
+        v.PutOnMezo(l);
+        v.CuccFelvetel();
     }
-    private static void Védő_kód_tanulás(){
-        VédőÁgens a = new VédőÁgens();
+    private static void Vedo_kod_tanulas(){
+        Vedoagens a = new Vedoagens();
         Labor l = new Labor();
-        l.AddKód(a);
+        l.AddKod(a);
         Virologus v = new Virologus();
-        v.PutOnMező(l);
-        v.CuccFelvétel();
+        v.PutOnMezo(l);
+        v.CuccFelvetel();
     }
-    private static void Emléktörlő_kód_tanulás(){
-        Emlékezettörlés a = new Emlékezettörlés();
+    private static void Emlektorlo_kod_tanulas(){
+        Emlekezettorles a = new Emlekezettorles();
         Labor l = new Labor();
-        l.AddKód(a);
+        l.AddKod(a);
         Virologus v = new Virologus();
-        v.PutOnMező(l);
-        v.CuccFelvétel();
+        v.PutOnMezo(l);
+        v.CuccFelvetel();
     }
     public static void main(String args[]) {
-        n = new NullÁgens();
-        vitusLépés = new VitusLépés();
-        aktorLépés = new AktorLépés();
-        stunLépés = new StunLépés();
+        n = new Nullagens();
+        vitusLepes = new VitusLepes();
+        aktorLepes = new AktorLepes();
+        stunLepes = new StunLepes();
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
         while (true) {
@@ -502,124 +500,124 @@ public class Game {
             if (line == null) break;
             switch (line) {
                 case "vml":
-                    Virológus_mezőre_lép();
+                    Virologus_mezore_lep();
                     break;
                 case "vol":
-                    Virológus_egy_óvóhelyre_lép();
+                    Virologus_egy_ovohelyre_lep();
                     break;
                 case "vll":
-                    Virológus_egy_labor_mezőre_lép();
+                    Virologus_egy_labor_mezore_lep();
                     break;
                 case "vrl":
-                    Virológus_egy_raktár_mezőre_lép();
+                    Virologus_egy_raktar_mezore_lep();
                     break;
                 case "sl":
-                    Stun_lépés();
+                    Stun_lepes();
                     break;
                 case "vtm":
-                    Vitus_Lépés_mező();
+                    Vitus_Lepes_mezo();
                     break;
                 case "vtl":
-                    Vitus_Lépés_labor();
+                    Vitus_Lepes_labor();
                     break;
                 case "vto":
-                    Vitus_Lépés_óvóhely();
+                    Vitus_Lepes_ovohely();
                     break;
                 case "vtr":
-                    Vitus_Lépés_raktár();
+                    Vitus_Lepes_raktar();
                     break;
                 case "nf":
-                    Nukleotid_felvétel_raktárból();
+                    Nukleotid_felvetel_raktarbol();
                     break;
                 case "af":
-                    Aminosav_felvétel_raktárból();
+                    Aminosav_felvetel_raktarbol();
                     break;
                 case "nr":
-                    Nukleotid_rablás_másik_virológustól();
+                    Nukleotid_rablas_masik_virologustol();
                     break;
                 case "ar":
-                    Aminosav_rablás_másik_virológustól();
+                    Aminosav_rablas_masik_virologustol();
                     break;
                 case "vfo":
-                    Védőköpeny_felvétel_óvóhelyről();
+                    Vedokopeny_felvetel_ovohelyrol();
                     break;
                 case "zfo":
-                    Zsák_felvétel_óvóhelyről();
+                    Zsak_felvetel_ovohelyrol();
                     break;
                 case "kfo":
-                    Kesztyű_felvétel_óvóhelyről();
+                    Kesztyu_felvetel_ovohelyrol();
                     break;
                 case "vr":
-                    Védőköpeny_rablás_virológustól();
+                    Vedokopeny_rablas_virologustol();
                     break;
                 case "zr":
-                    Zsák_rablás_virológustól();
+                    Zsak_rablas_virologustol();
                     break;
                 case "kr":
-                    Kesztyű_rablás_virológustól();
+                    Kesztyu_rablas_virologustol();
                     break;
-                case "beken bénító":
-                    Virológus_másik_virológust_beken_bénító_ágenssel();
+                case "beken benito":
+                    Virologus_masik_virologust_beken_benoto_agenssel();
                     break;
                 case "beken vitus":
-                    Virológus_másik_virológust_beken_vitustánc_ágenssel();
+                    Virologus_masik_virologust_beken_vitustanc_agenssel();
                     break;
-                case "beken védő":
-                    Virológus_másik_virológust_beken_védő_ágenssel();
+                case "beken vedo":
+                    Virologus_masik_virologust_beken_vedo_agenssel();
                     break;
-                case "beken emlék":
-                    Virológus_másik_virológust_beken_emléktörlő_ágenssel();
+                case "beken emlek":
+                    Virologus_masik_virologust_beken_emlektorlo_agenssel();
                     break;
-                case "beken bénító magát":
-                    Virológus_bekeni_magát_bénító_ágenssel();
+                case "beken benito magat":
+                    Virologus_bekeni_magat_benoto_agenssel();
                     break;
-                case "beken vitus magát":
-                    A_virológus_bekeni_magát_vitustánc_ágenssel();
+                case "beken vitus magat":
+                    A_virologus_bekeni_magat_vitustanc_agenssel();
                     break;
-                case "beken védő magát":
-                    A_virológus_bekeni_magát_védő_ágenssel();
+                case "beken vedo magat":
+                    A_virologus_bekeni_magat_vedo_agenssel();
                     break;
-                case "beken emlék magát":
-                    Virológus_bekeni_magát_emléktörlő_ágenssel();
+                case "beken emlek magat":
+                    Virologus_bekeni_magat_emlektorlo_agenssel();
                     break;
-                case "vissza bénító":
-                    Kesztyű_visszadob_bénítóÁgens();
+                case "vissza benito":
+                    Kesztyu_visszadob_benotoagens();
                     break;
-                case "vissza védő":
-                    Kesztyű_visszadob_védőÁgens();
+                case "vissza vedo":
+                    Kesztyu_visszadob_vedoagens();
                     break;
                 case "vissza vitus":
-                    Kesztyű_visszadob_Vitustánc();
+                    Kesztyu_visszadob_Vitustanc();
                     break;
-                case "vissza emlék":
-                    Kesztyű_visszadob_emléktörlőt();
+                case "vissza emlek":
+                    Kesztyu_visszadob_emlektorlot();
                     break;
-                case "bénító készítés":
-                    Bénító_ágens_készítés();
+                case "benito keszites":
+                    Benoto_agens_keszotes();
                     break;
-                case "vitus készítés":
-                    Vitustánc_készítés();
+                case "vitus keszites":
+                    Vitustanc_keszotes();
                     break;
-                case "védő készítés":
-                    Védő_ágens_készítés();
+                case "vedo keszites":
+                    Vedo_agens_keszotes();
                     break;
-                case "emlék készítés":
-                    Emléktörlő_ágens_készítés();
+                case "emlek keszites":
+                    Emlektorlo_agens_keszotes();
                     break;
                 case "win":
-                    Játék_megnyerése();
+                    Jatek_megnyerese();
                     break;
-                case "bénító tanul":
-                    Bénító_kód_tanulás();
+                case "benito tanul":
+                    Benoto_kod_tanulas();
                     break;
                 case "vitus tanul":
-                    Vitustánc_kód_tanulás();
+                    Vitustanc_kod_tanulas();
                     break;
-                case "védő tanul":
-                    Védő_kód_tanulás();
+                case "vedo tanul":
+                    Vedo_kod_tanulas();
                     break;
-                case "emlék tanul":
-                    Emléktörlő_kód_tanulás();
+                case "emlek tanul":
+                    Emlektorlo_kod_tanulas();
                     break;
                 default:
                     break;

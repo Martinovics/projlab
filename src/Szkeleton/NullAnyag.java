@@ -2,10 +2,10 @@ package Szkeleton;
 
 public class NullAnyag extends Anyag{
     public NullAnyag(){
-        System.out.println(this +" létrejött");
+        System.out.println(this +" letrejott");
     }
     @Override
-    public boolean KellCrafthoz(Ágens a) {
+    public boolean KellCrafthoz(agens a) {
         return true;
     }
 

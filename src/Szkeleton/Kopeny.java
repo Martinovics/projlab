@@ -1,12 +1,12 @@
 package Szkeleton;
 
-public class Köpeny extends Item{
-    public Köpeny(){
-        System.out.println("Köpeny létrejött");
+public class Kopeny extends Item{
+    public Kopeny(){
+        System.out.println("Kopeny letrejott");
     }
     @Override
-    public Ágens BekenődésEffket(Virologus v, Ágens a) {
-        System.out.println(this+" bekenődésEffekt");
+    public agens BekenodesEffket(Virologus v, agens a) {
+        System.out.println(this+" bekenodesEffekt");
         return a;
     }
 
@@ -22,12 +22,12 @@ public class Köpeny extends Item{
 
     @Override
     public String toString() {
-        return "Köpeny";
+        return "Kopeny";
     }
 
     @Override
-    public boolean CuccÁtadás(Virologus v) {
-        v.TárgyMegkapás(this);
+    public boolean Cuccatadas(Virologus v) {
+        v.TargyMegkapas(this);
         return true;
     }
 }

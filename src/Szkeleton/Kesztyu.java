@@ -1,8 +1,8 @@
 package Szkeleton;
 
-public class Kesztyű extends Item{
-    public  Kesztyű(){
-        System.out.println(this+" létrejött");
+public class Kesztyu extends Item{
+    public  Kesztyu(){
+        System.out.println(this+" letrejott");
     }
 
     @Override
@@ -16,20 +16,20 @@ public class Kesztyű extends Item{
     }
 
     @Override
-    public Ágens BekenődésEffket(Virologus v, Ágens a) {
-        System.out.println(this+" bekenődésEffekt");
-        v.overwhelmingBekenődés(a);
+    public agens BekenodesEffket(Virologus v, agens a) {
+        System.out.println(this+" bekenodesEffekt");
+        v.overwhelmingBekenodes(a);
         return Game.ReturnN();
     }
 
     @Override
     public String toString() {
-        return "Kesztyű";
+        return "Kesztyu";
     }
 
     @Override
-    public boolean CuccÁtadás(Virologus v) {
-        v.TárgyMegkapás(this);
+    public boolean Cuccatadas(Virologus v) {
+        v.TargyMegkapas(this);
         return true;
     }
 }

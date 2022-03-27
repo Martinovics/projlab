@@ -2,10 +2,10 @@ package Szkeleton;
 
 public class Nukleotid extends  Anyag{
     public Nukleotid(){
-        //System.out.println(this+" leeeeeétrejött");
+        //System.out.println(this+" leeeeeetrejott");
     }
     @Override
-    public boolean KellCrafthoz(Ágens a) {
+    public boolean KellCrafthoz(agens a) {
         if(a.NukleotidVisit(this)){
             return true;
         }

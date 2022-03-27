@@ -1,10 +1,10 @@
 package Szkeleton;
 
-public class Emlékezettörlés extends  Ágens{
+public class Emlekezettorles extends  agens{
   
-    public Emlékezettörlés(){
+    public Emlekezettorles(){
         super(0, 5);
-        System.out.println(this +" létrejött");
+        System.out.println(this +" letrejott");
         Recept.add(new Nukleotid());
         Recept.add(new Nukleotid());
         Recept.add(new Nukleotid());
@@ -23,31 +23,31 @@ public class Emlékezettörlés extends  Ágens{
     }
 
     @Override
-    public Ágens BekenődésEffekt(Ágens a) {
-        System.out.println(this +" bekenődésEffekt");
+    public agens BekenodesEffekt(agens a) {
+        System.out.println(this +" bekenodesEffekt");
         return a;
     }
 
     /**
-     * Emlékezettörlés másolatot átad v Virológusnak
-     * @param v Virológus, amelyik megkapja a másolatot
+     * Emlekezettorles masolatot atad v Virologusnak
+     * @param v Virologus, amelyik megkapja a masolatot
      */
     @Override
     protected void Create_(Virologus v) {
-        Emlékezettörlés a_copy = new Emlékezettörlés();
-        v.ÁgensMegkapás(a_copy);
+        Emlekezettorles a_copy = new Emlekezettorles();
+        v.agensMegkapas(a_copy);
     }
     @Override
-    public boolean equals(Ágens a) {
+    public boolean equals(agens a) {
         return false;
     }
     @Override
-    public boolean equals(Emlékezettörlés a) {
+    public boolean equals(Emlekezettorles a) {
         return true;
     }
 
     @Override
     public String toString() {
-        return "Emlékezettörlés";
+        return "Emlekezettorles";
     }
 }

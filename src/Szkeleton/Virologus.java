@@ -4,151 +4,151 @@ import java.util.ArrayList;
 
 
 public class Virologus implements Steppable {
-    /**@author Balogh Dávid
-     * A virológus attribútumai
+    /**@author Balogh David
+     * A virologus attributumai
      * */
 
     public ArrayList<Anyag> anyagok;
-    public ArrayList<Ágens> kódok;
-    public ArrayList<Ágens> ágensek;
-    public ArrayList<Ágens> buff;
-    public Mező mező;
-    public ArrayList<Item> felszerelés;
-    public ILépés LépésViselkedés;
-    private ArrayList<Cucc> rabolható;
+    public ArrayList<agens> kodok;
+    public ArrayList<agens> agensek;
+    public ArrayList<agens> buff;
+    public Mezo mezo;
+    public ArrayList<Item> felszereles;
+    public ILepes LepesViselkedes;
+    private ArrayList<Cucc> rabolhato;
 
     public int itemCapacity;
     public Virologus(){
-        kódok = new ArrayList<>();
-        ágensek = new ArrayList<>();
+        kodok = new ArrayList<>();
+        agensek = new ArrayList<>();
         buff = new ArrayList<>();
         anyagok = new ArrayList<>();
-        felszerelés = new ArrayList<>();
-        LépésViselkedés = Game.getAktorLépés();
-        System.out.println(this +" létrejött");
+        felszereles = new ArrayList<>();
+        LepesViselkedes = Game.getAktorLepes();
+        System.out.println(this +" letrejott");
     }
 
-    public void PutOnMező(Mező m){
-        mező = m;
+    public void PutOnMezo(Mezo m){
+        mezo = m;
         m.AcceptViro(this);
     }
 
 
     /**
-     * @author Balogh Dávid
-     * A virológus mozgatásáért felelős függvény
-     * Kiszedi az egyik mezőről és berakja a másikba
-     * @param m Mező
+     * @author Balogh David
+     * A virologus mozgatasaert felelos fuggveny
+     * Kiszedi az egyik mezorol es berakja a masikba
+     * @param m Mezo
      * */
-    public void move(Mező m){
+    public void move(Mezo m){
         m.AcceptViro(this);
-        this.mező.RemoveViro(this);
-        mező = m;
-        System.out.println(this +" átment a másik mezőre");
+        this.mezo.RemoveViro(this);
+        mezo = m;
+        System.out.println(this +" atment a masik mezore");
     }
 
     /**
-     *@author Balogh Dávid
-     * Ez a függvény is a mozgatáshoz kell
-     *@param m Mező
+     *@author Balogh David
+     * Ez a fuggveny is a mozgatashoz kell
+     *@param m Mezo
      * */
-    public void Letapogat(Mező m){
+    public void Letapogat(Mezo m){
         m.Felfedez(this);
     }
     /**
-     * @author Balogh Dávid
-     * Az Ágensek elkészítését meghívó függvény
-     * @param a Ágens
+     * @author Balogh David
+     * Az agensek elkesziteset meghivo fuggveny
+     * @param a agens
      * */
-    public void ÁgensElőállít(Ágens a){
+    public void agensEloallit(agens a){
         a.Create(this);
-        System.out.println(this +" előállított egy "+ a+ "-t");
+        System.out.println(this +" eloallitott egy "+ a+ "-t");
     }
     /**
-     * @author Balogh Dávid
-     * Valamilyen dolgot egy mezőről felveszünk és eltárolunk
+     * @author Balogh David
+     * Valamilyen dolgot egy mezorol felveszunk es eltarolunk
      * */
 
-    public void CuccFelvétel(){
-        this.mező.CuccÁtadás(this);
-        System.out.println(this +" felvette a mezőről a cuccot");
+    public void CuccFelvetel(){
+        this.mezo.Cuccatadas(this);
+        System.out.println(this +" felvette a mezorol a cuccot");
     }
 
     /**
-     * @author Balogh Dávid
-     * Valamilyen kódot eltárolunk
-     * @param a Ágens
+     * @author Balogh David
+     * Valamilyen kodot eltarolunk
+     * @param a agens
      * */
 
-    public boolean GénMegkapás(Ágens a){
-        this.kódok.add(a);
-        System.out.println(this +" megkapta a gént");
+    public boolean GenMegkapas(agens a){
+        this.kodok.add(a);
+        System.out.println(this +" megkapta a gent");
         return true;
     }
 
     /**
-     * @author Balogh Dávid
-     * Valamilyen anyagot eltárolunk
+     * @author Balogh David
+     * Valamilyen anyagot eltarolunk
      * @param a Anyag
      * */
 
-    public boolean AnyagMegkapás(Anyag a){
+    public boolean AnyagMegkapas(Anyag a){
         System.out.println(this + "Megkapta az anyagot");
         this.anyagok.add(a);
         return true;
     }
     /**
-     * @author Balogh Dávid
-     * Valamilyen tárgyat eltárolunk
+     * @author Balogh David
+     * Valamilyen targyat eltarolunk
      * @param i Item
      * */
 
-    public boolean TárgyMegkapás(Item i){
-        System.out.println(this + "Megkapta a tárgyat");
-        this.felszerelés.add(i);
+    public boolean TargyMegkapas(Item i){
+        System.out.println(this + "Megkapta a targyat");
+        this.felszereles.add(i);
         i.Effekt(this);
         return true;
     }
 
     /**
-     * @author Balogh Dávid
-     * Valamilyen kész ágenst eltárolunk
+     * @author Balogh David
+     * Valamilyen kesz agenst eltarolunk
      * */
-    public boolean ÁgensMegkapás(Ágens a){
-        System.out.println(this + "Megkapta az ágenst");
-        this.ágensek.add(a);
+    public boolean agensMegkapas(agens a){
+        System.out.println(this + "Megkapta az agenst");
+        this.agensek.add(a);
         return true;
     }
     /**
-     * @author Balogh Dávid
-     * Valamilyen ágens hatást aktiválunk, tehát szintén
-     * kollekcióba eltárolunk
+     * @author Balogh David
+     * Valamilyen agens hatast aktivalunk, tehat szinten
+     * kollekcioba eltarolunk
      * */
-    public boolean BuffMegkapás(Ágens a){
+    public boolean BuffMegkapas(agens a){
         System.out.println(this + "Megkapta a buffot");
         this.buff.add(a);
         return true;
     }
 
     /**
-     * @author Balogh Dávid
-     * Valamilyen ágens hatást deaktiválunk, tehát szintén
-     * kollekcióból kiszedünk
+     * @author Balogh David
+     * Valamilyen agens hatast deaktivalunk, tehat szinten
+     * kollekciobol kiszedunk
      * */
-    public boolean RemoveBuff(Ágens a){
+    public boolean RemoveBuff(agens a){
         System.out.println(this + " elvesztette a buffot");
         this.buff.remove(a);
         a.AntiEffekt(this);
         return true;
     }
-    public boolean CuccMegkapás(Cucc c){
-        c.CuccÁtadás(this);
+    public boolean CuccMegkapas(Cucc c){
+        c.Cuccatadas(this);
         return true;
     }
 
     /**
-     * @author Balogh Dávid
-     * Valamilyen dolgot kiszedünk a kollekciónkból
+     * @author Balogh David
+     * Valamilyen dolgot kiszedunk a kollekcionkbol
      * @param c Cucc
      * */
 
@@ -159,18 +159,18 @@ public class Virologus implements Steppable {
 
 
     /**
-     *@author Balogh Dávid
-     * Ez a függvény indítja el a rablás folyamatát
+     *@author Balogh David
+     * Ez a fuggveny inditja el a rablas folyamatat
      * @param v Virologus
      * */
     public void Rabol(Virologus v){
-        this.rabolható=v.Rabolva();
+        this.rabolhato=v.Rabolva();
         //felsorolunk toStringgel
     }
 
     /**
-     * @author Balogh Dávid
-     * Visszatérés a rabolható tárgyak és anyagok kollekciójával
+     * @author Balogh David
+     * Visszateres a rabolhato targyak es anyagok kollekciojaval
      * */
     public  ArrayList<Cucc> Rabolva(){
         Stun s = new Stun();
@@ -178,7 +178,7 @@ public class Virologus implements Steppable {
         for (int i = 0; i < this.buff.size(); i++) {
             if(buff.get(i).equals(s)){
 
-                c.addAll(felszerelés);
+                c.addAll(felszereles);
                 c.addAll(anyagok);
 
             }
@@ -189,106 +189,106 @@ public class Virologus implements Steppable {
     }
 
     /**
-     * @author Balogh Dávid
-     *Itt vesszük ki az adott virológus kollekciójából a dolgokat
+     * @author Balogh David
+     *Itt vesszuk ki az adott virologus kollekciojabol a dolgokat
      *@param v Virologus
      *@param c Cucc
      * */
-    public  void TárgyElvétel(Virologus v, Cucc c){
+    public  void TargyElvetel(Virologus v, Cucc c){
         v.RemoveCucc(c);
-        c.CuccÁtadás(this);
+        c.Cuccatadas(this);
     }
 
 
     /**
-     * @author Balogh Dávid
-     * Kinullázzuk a virológus megtanult kódjainak a kollekcióját
+     * @author Balogh David
+     * Kinullazzuk a virologus megtanult kodjainak a kollekciojat
      * */
     public void mindentElfelejt(){
-        this.kódok.removeAll(kódok);
+        this.kodok.removeAll(kodok);
     }
 
     /**
-     * @author Balogh Dávid
-     * LépésViselkedéstől függően lépünk a virológussal
+     * @author Balogh David
+     * LepesViselkedestol fuggoen lepunk a virologussal
      * */
     public void Step(){
-        LépésViselkedés.Lépés(this);
+        LepesViselkedes.Lepes(this);
     }
     /**
-     * @author Balogh Dávid
-     * Átállítjuk a LépésViselkedésünket
-     * @param s ILépés
+     * @author Balogh David
+     * atallitjuk a LepesViselkedesunket
+     * @param s ILepes
      * */
-    public void setLépésBehaviour(ILépés s){
-        this.LépésViselkedés=s;
+    public void setLepesBehaviour(ILepes s){
+        this.LepesViselkedes=s;
     }
 
     /**
-     * @author Balogh Dávid
-     * ELindítja a kenés folyamatát
+     * @author Balogh David
+     * ELinditja a kenes folyamatat
      * @param v Virologus
-     * @param a Ágens
+     * @param a agens
      * */
-    public void ÁgensKenés(Virologus v, Ágens a){
-        this.ágensek.remove(a);
-        System.out.println(this + "bekeni a másikat");
-        v.Bekenődés(this,a);
+    public void agensKenes(Virologus v, agens a){
+        this.agensek.remove(a);
+        System.out.println(this + "bekeni a masikat");
+        v.Bekenodes(this,a);
     }
 
     /**
-     * @author Balogh Dávid
-     * Bekenjük az adott virológust és aktiváljuk az effektet
+     * @author Balogh David
+     * Bekenjuk az adott virologust es aktivaljuk az effektet
      * @param v Virologus
-     * @param a Ágens
+     * @param a agens
      * */
 
-    public void Bekenődés(Virologus v, Ágens a){
-        for (int i = 0; i < felszerelés.size(); i++) {
-            a=this.felszerelés.get(i).BekenődésEffket(v,a);
+    public void Bekenodes(Virologus v, agens a){
+        for (int i = 0; i < felszereles.size(); i++) {
+            a=this.felszereles.get(i).BekenodesEffket(v,a);
         }
         for (int i = 0; i < buff.size(); i++) {
-            a=this.buff.get(i).BekenődésEffekt(a);
+            a=this.buff.get(i).BekenodesEffekt(a);
         }
         System.out.println(this + " alkalmazva lett a(z) " + a) ;
-        a.BuffÁtadás(this);
+        a.Buffatadas(this);
     }
 
     /**
-     * @author Balogh Dávid
-     * A kenés védekezést és visszadobást valósítja meg
-     * @param a Ágens
+     * @author Balogh David
+     * A kenes vedekezest es visszadobast valositja meg
+     * @param a agens
      * */
-    public void overwhelmingBekenődés(Ágens a){
+    public void overwhelmingBekenodes(agens a){
         System.out.println("right back at you buckaroo!!");
-        a.BuffÁtadás(this);
+        a.Buffatadas(this);
 
     }
     /**
-     * @author Balogh Dávid
-     * Kör vége
+     * @author Balogh David
+     * Kor vege
      * */
     public void EndRound(){
 
-        System.out.println("Endround meghívva");
+        System.out.println("Endround meghivva");
     }
 
     /**
-     * @author Balogh Dávid
+     * @author Balogh David
      * Visitek
      * */
-    public void visit(Mező m){
-        System.out.println("Mező ősosztály visitelve lett");
+    public void visit(Mezo m){
+        System.out.println("Mezo ososztaly visitelve lett");
     }
     public void visit(Labor l){
         System.out.println("Labor visitelve lett");
 
     }
-    public void visit(Raktár r){
-        System.out.println("Raktár visitelve lett");
+    public void visit(Raktar r){
+        System.out.println("Raktar visitelve lett");
     }
-    public void visit(Óvóhely o){
-        System.out.println("Óvóhely visitelve lett");
+    public void visit(ovohely o){
+        System.out.println("ovohely visitelve lett");
     }
     public void ItemVisit(Item i){
         System.out.println("Item visitelve lett");

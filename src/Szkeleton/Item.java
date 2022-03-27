@@ -2,41 +2,41 @@ package Szkeleton;
 
 public abstract class Item  implements Cucc{
     /**
-    *A TárgyMegkapás() végén hívódik, amikor a Virológus felvette az Itemet. A ténylegesen megvalósított leszármazott írja le, hogy valóban mit csinál.
-    *@param v - paramáter virológus
+    *A TargyMegkapas() vegen hivodik, amikor a Virologus felvette az Itemet. A tenylegesen megvalositott leszarmazott irja le, hogy valoban mit csinal.
+    *@param v - paramater virologus
     *@return void
     */
     public abstract void Effekt(Virologus v);
      /**
-    *Leszármazottban érdekes.
-    *@param v - paramáter virológus
+    *Leszarmazottban erdekes.
+    *@param v - paramater virologus
     *@return void
     */
     public abstract void AntiEffekt(Virologus v);
      /**
-    *Akkor hívódik meg, amikor a birtokló virológust valamivel bekennék. Ilyenkor az Itemeknek van beleszólása milyen Ágenssel lesz bekenve. 
-    *@param v - virológus
-    *@param a - ágens
-    *@return ágens
+    *Akkor hivodik meg, amikor a birtoklo virologust valamivel bekennek. Ilyenkor az Itemeknek van beleszolasa milyen agenssel lesz bekenve. 
+    *@param v - virologus
+    *@param a - agens
+    *@return agens
     */
-    public abstract Ágens BekenődésEffket(Virologus v, Ágens a);
+    public abstract agens BekenodesEffket(Virologus v, agens a);
      /**
-    *Meghívja a v ItemVisit()-jét, ami majd visszahívja az AntiEffektet()
-    *@param v - paramáter virológus
+    *Meghivja a v ItemVisit()-jet, ami majd visszahivja az AntiEffektet()
+    *@param v - paramater virologus
     *@return void
     */
     public void removeCucc(Virologus v){
         v.ItemVisit(this);
-        System.out.println("Item elvevődött");
+        System.out.println("Item elvevodott");
     }
      /**
-    *Eszköz átadása a paraméterként kapott virológusnak, ha igazzal tér vissza.
-    *@param v - paramáter virológus
+    *Eszkoz atadasa a parameterkent kapott virologusnak, ha igazzal ter vissza.
+    *@param v - paramater virologus
     *@return boolean (true/false)
     */
-    public boolean ItemÁtadás(Virologus v){
-            if(v.TárgyMegkapás(this)) {
-                System.out.println("Item Átadódott");
+    public boolean Itematadas(Virologus v){
+            if(v.TargyMegkapas(this)) {
+                System.out.println("Item atadodott");
                 return true;
             }
             else {
