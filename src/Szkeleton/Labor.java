@@ -1,18 +1,36 @@
 package Szkeleton;
 
-public class Labor extends Mező{
 
 
-    public void AddKód(){
 
+
+
+public class Labor extends Mező {
+
+
+    private Ágens kód;
+
+
+
+
+    public Labor() {
+        this.kód = new NullÁgens();  // majd a game később létrehoz egy normális ágenst az AddKód-al
     }
-    @Override
-    public void CuccÁtadás(Virologus v) {
-        super.CuccÁtadás(v);
+
+
+
+
+    /*
+    * Hozzáadja a mezőhöz a megadott ágenst
+    *
+    * @param a Ágens, amit hozzá szeretnénk adni a mezőhöz
+    * @return void
+    */
+    public void AddKód(Ágens agens) {  // hozzáad egy random kódot
+        this.kód = agens;
     }
 
-    @Override
-    public void Felfedez(Virologus v) {
-        super.Felfedez(v);
-    }
+
+
+
 }
