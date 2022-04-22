@@ -6,11 +6,38 @@ public class Kesztyű extends Item{
     *@param v - paraméter virológus
     *@return void
     */
+
+    /*
+    NoUses - alapértelmezés szerint 3, de ha 0-ra állítódik megsemmisíti önmagát.
+    */
+    private int NoUses;
+
+    /*
+    Konstruktor, alapértelmezett 3-as értékre állítja az attribútum értékét.
+    */
+    public Kesztyű(){
+        this.setNoUses(3);
+        Kesztyű kesztyu = new Kesztyű();
+    }
+
     @Override
     public void AntiEffekt(Virologus v) {
-        Item.AntiEffekt(v);
-        v.TárgyElvétel(v, this);
-        
+        //v.TárgyElvétel(v, this);
+        System.out.println("Kesztyű antieffektus");
+    }
+
+    /*
+    Getter fgv. a NoUses attribútumnak.
+    */
+    public int getNoUses() {
+        return NoUses;
+    }
+
+    /*
+    Setter fgv. a NoUses attribútumnak.
+    */
+    public void setNoUses(int noUses) {
+        this.NoUses = noUses;
     }
     /**
     *A TárgyMegkapás() végén hívódik, amikor a Virológus felvette az Itemet.
@@ -20,7 +47,7 @@ public class Kesztyű extends Item{
     */
     @Override
     public void Effekt(Virologus v) {
-        Item.Effekt(v);
+        System.out.println("Kesztyű effektus");
     }
      /**
     *A paraméterként kapott virológusra keni vissza az "a" ágenst, s Nullágenssel tér vissza.
@@ -30,7 +57,35 @@ public class Kesztyű extends Item{
     */
     @Override
     public Ágens BekendőésEffket(Virologus v, Ágens a) {
-        v.BekendőésEffket(v, a);
-        return NullÁgens;
+        v.Bekenődés(v, a);
+        NullÁgens nulla = new NullÁgens();
+        if(this.getNoUses()>0) {
+            this.setNoUses(this.getNoUses()-1);
+        }
+        else if(this.getNoUses()==0) {
+            v.RemoveCuc(this);
+        }
+        return nulla;
+    }
+    /**
+     * String osztály toString() fgv.jének füldefiniálása
+     */
+    public String toString() {
+        return "A Kesztyű létrejött";
+    }
+
+    /**
+     * True-val tér vissza, ha sikerült átvennie a kedvezményezett Virológusnak a Kesztyűt.
+     * False-al, ha ez nem sikerült.
+     * @param v
+     * @return boolean
+     */
+    public boolean Cuccatadas(Virologus v) {
+        if(v.TárgyMEgkapés(this)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

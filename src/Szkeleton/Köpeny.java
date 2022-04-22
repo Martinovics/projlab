@@ -10,12 +10,24 @@ import java.util.Random;
         @return
         */
 public class Köpeny extends Item{
+
+    /*
+    Köpeny konstruktora
+    */
+    public Köpeny(){
+        Köpeny kopeny = new Köpeny();
+    }
+
+    /*
+    82.3 % valószínűséggel ad vissza NullÁgenst(üres), a többi esetben a paraméterként kapott a ágenst adja vissza.
+    */
     @Override
     public Ágens BekendőésEffket(Virologus v, Ágens a) {
         Random rand = new Random();
-        rand.nextDouble();
-        if(rand<=0.823) {
-            return NullÁgens;
+        double drand = rand.nextDouble();
+        if(drand<=0.823) {
+            NullÁgens nulla = new NullÁgens();
+            return nulla;
         }
         else {
             return a;
@@ -29,7 +41,7 @@ public class Köpeny extends Item{
     */
     @Override
     public void Effekt(Virologus v) {
-        Item.Effekt(v);
+        System.out.println("Köpeny effekt");
     }
      /**
     *Nem csinál semmi érdemlegeset.
@@ -38,6 +50,27 @@ public class Köpeny extends Item{
     */
     @Override
     public void AntiEffekt(Virologus v) {
-        Item.AntiEffekt(v);
+        System.out.println("Köpeny antieffektus");
+    }
+    /**
+     * String osztály toString() fgv.jének füldefiniálása
+     */
+    public String toString() {
+        return "A Köpeny létrejött";
+    }
+
+    /**
+     * True-val tér vissza, ha sikerült átvennie a kedvezményezett Virológusnak a Köpenyt.
+     * False-al, ha ez nem sikerült.
+     * @param v
+     * @return boolean
+     */
+    public boolean Cuccatadas(Virologus v) {
+        if(v.TárgyMEgkapés(this)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

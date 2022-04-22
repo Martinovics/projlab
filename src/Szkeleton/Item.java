@@ -1,14 +1,21 @@
 package Szkeleton;
 
 
-public class Item {
+public class Item implements Cucc {
+
+    /**
+     * Item konstruktora
+     */
+    public Item() {
+        Item item = new Item();
+    }
     /**
     *A TárgyMegkapás() végén hívódik, amikor a Virológus felvette az Itemet. A ténylegesen megvalósított leszármazott írja le, hogy valóban mit csinál.
     *@param v - paramáter virológus
     *@return void
     */
     public void Effekt(Virologus v){
-        v.Cuccfelvétel();
+        v.CuccFelvétel();
     }
      /**
     *Leszármazottban érdekes.
@@ -42,7 +49,7 @@ public class Item {
     *@return boolean (true/false)
     */
     public boolean ItemÁtadás(Virologus v){
-            if(v.TárgyMEgkapés()) {
+            if(v.TárgyMEgkapés(this)) {
                 return true;
             }
             else {
