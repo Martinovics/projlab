@@ -26,6 +26,7 @@ public class Item {
     */
     public Ágens BekendőésEffket(Virologus v, Ágens a){
         v.Bekenődés(v, a);
+        return a;
     }
      /**
     *Meghívja a v ItemVisit()-jét, ami majd visszahívja az AntiEffektet()
