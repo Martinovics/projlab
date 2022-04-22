@@ -35,7 +35,7 @@ public class Köpeny extends Item{
     }
     /**
     *A TárgyMegkapás() végén hívódik, amikor a Virológus felvette az Itemet.
-    *A kesztyű Effekt metódusa nem csinál semmi érdemlegeset.
+    *A köpeny Effekt metódusa nem csinál semmi érdemlegeset.
     *@param v - paraméter virológus
     *@return void
     */
