@@ -3,11 +3,14 @@ package Szkeleton;
 
 public class Item implements Cucc {
 
+    static private int IDgen;
+    private int ID;
     /**
      * Item konstruktora
      */
     public Item() {
         Item item = new Item();
+        ID = IDgen++;
     }
     /**
     *A TárgyMegkapás() végén hívódik, amikor a Virológus felvette az Itemet. A ténylegesen megvalósított leszármazott írja le, hogy valóban mit csinál.
@@ -56,4 +59,10 @@ public class Item implements Cucc {
                 return false;
             }
     }
+
+    public boolean equals(Item item) {return true;}
+    public boolean equals(Kesztyű kesztyű) {return false;}
+    public boolean equals(Köpeny köpeny) {return false;}
+    public boolean equals(Zsák zsák) {return false;}
+    public boolean equals(Balta balta) {return false;}
 }

@@ -1,9 +1,21 @@
 package Szkeleton;
 
 public class MedveVírus extends Ágens {
-    
+    /**
+     * Az aktuális ID-ja za objektumnak, ami inkrementálódik.
+     */
+    static private int IDgen;
+    /**
+     * ID of the Object
+     * @author Balogh Csaba
+     */
+    private int ID;
+    /**
+     * MedveVírus konstruktora
+     */
     public MedveVírus() {
-        MedveVírus medvevir = new MedveVírus();
+        //MedveVírus medvevir = new MedveVírus();
+        ID = IDgen++;
     }
 
     /*
@@ -37,16 +49,22 @@ public class MedveVírus extends Ágens {
     public String toString() {
         return "A Medvevírus létrejött";
     }
-
+    /**
+     * Megfertőzi (átadja magát) a paraméterként kapott Virológust a MedveVírussal, s ennek hatására az állapota ,,Kod''-ra áll.
+     * @param v
+     */
     private void Fertőz(Virologus v) {
         if(v.BuffMegkapás(this)) {
-            this.KódÁtadás();
+            this.state = State.Kod;
         }
         else {
             
         }
     }
-
+    /**
+     * Meghívja a paraméterként kapott Virológusra a Fertőz() fgv.-t.
+     * @param v
+     */
     public void Buffátadás(Virologus v) {
         MedveVírus medvev = new MedveVírus();
         medvev.Fertőz(v);

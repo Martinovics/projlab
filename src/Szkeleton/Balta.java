@@ -1,11 +1,22 @@
 package Szkeleton;
 
 public class Balta extends Item {
+
+    /**
+     * Az aktuális ID-ja za objektumnak, ami inkrementálódik.
+     */
+    static private int IDgen;
+    /**
+     * ID of the Object
+     * @author Balogh Csaba
+     */
+    private int ID;
     /**
      * Balta konstruktora
      */
     public Balta() {
-        Balta balta = new Balta();
+       //Balta balta = new Balta();
+       ID = IDgen++;
     }
      /**
     *A TárgyMegkapás() végén hívódik, amikor a Virológus felvette az Itemet.

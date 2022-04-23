@@ -2,20 +2,33 @@ package Szkeleton;
 
 import java.util.Random;
 
-        /*
+    /**
+     * Az aktuális ID-ja za objektumnak, ami inkrementálódik.
+     */
+
+    /*
         * 82.3%-al ad vissza NullÁgens-t, a többi esetben a paraméterként kapott a-t.
         @param v - paramáterként kapott virológus
         @param a - paraméterként kapott ágens
         *
         @return
-        */
+    */
 public class Köpeny extends Item{
-
+     
+    /**
+     * Az aktuális ID-ja za objektumnak, ami inkrementálódik.
+     */
+    static private int IDgen;
+    /**
+     * ID of the Object
+     * @author Balogh Csaba
+     */
+    private int ID;
     /*
     Köpeny konstruktora
     */
     public Köpeny(){
-        Köpeny kopeny = new Köpeny();
+        ID = IDgen++;
     }
 
     /*

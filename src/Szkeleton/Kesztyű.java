@@ -1,23 +1,26 @@
 package Szkeleton;
 
 public class Kesztyű extends Item{
-     /**
-    *Nem csinál semmi érdemlegeset.
-    *@param v - paraméter virológus
-    *@return void
-    */
-
     /*
     NoUses - alapértelmezés szerint 3, de ha 0-ra állítódik megsemmisíti önmagát.
     */
     private int NoUses;
+    /**
+     * Az aktuális ID-ja za objektumnak, ami inkrementálódik.
+     */
+    static private int IDgen;
+    /**
+     * ID of the Object
+     * @author Balogh Csaba
+     */
+    private int ID;
 
     /*
     Konstruktor, alapértelmezett 3-as értékre állítja az attribútum értékét.
     */
     public Kesztyű(){
         this.setNoUses(3);
-        Kesztyű kesztyu = new Kesztyű();
+        ID = IDgen++;
     }
 
     @Override

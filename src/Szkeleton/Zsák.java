@@ -1,9 +1,20 @@
 package Szkeleton;
 
 public class Zsák extends Item{
-
+    /**
+     * Az aktuális ID-ja za objektumnak, ami inkrementálódik.
+     */
+    static private int IDgen;
+    /**
+     * ID of the Object
+     * @author Balogh Csaba
+     */
+    private int ID;
+    /**
+     * Zsák konstruktora
+     */
     public Zsák() {
-        Zsák zsak= new Zsák();
+        ID = IDgen++;
     }
     /**
     *-9 férőhelyet “ad” a virológusnak.
@@ -12,6 +23,7 @@ public class Zsák extends Item{
     */
     @Override
     public void AntiEffekt(Virologus v) {
+        v.getitemCapacity-=9;
         System.out.println("Zsák antieffekt");
     }
     /**
@@ -21,7 +33,7 @@ public class Zsák extends Item{
     */
     @Override
     public void Effekt(Virologus v) {
-        v.itemCapacity+=8;
+        v.getitemCapacity+=8;
         System.out.println("Zsák effekt");
     }
     /**
