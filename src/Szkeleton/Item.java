@@ -1,7 +1,7 @@
 package Szkeleton;
 
 
-public class Item implements Cucc {
+public abstract class Item implements Cucc {
 
     static private int IDgen;
     private int ID;
@@ -9,7 +9,6 @@ public class Item implements Cucc {
      * Item konstruktora
      */
     public Item() {
-        Item item = new Item();
         ID = IDgen++;
     }
     /**
